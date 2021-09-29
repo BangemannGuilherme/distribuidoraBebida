@@ -1,2 +1,2 @@
 # Distribuidora de Bebidas
-Projeto Integrador 1
+EssentialDrinks | Projeto Integrador 1

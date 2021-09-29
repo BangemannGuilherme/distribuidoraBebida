@@ -11,17 +11,19 @@ package entidade;
  */
 public class Cliente {
     
-    private int cod;
+    private int id;
     private String razaosocial;
     private String cnpj;
+    private String telefone;
+    private String email;
+    // private String situacao;
 
-
-    public int getCod() {
-        return cod;
+    public int getId() {
+        return id;
     }
 
-    public void setCod(int cod) {
-        this.cod = cod;
+    public void setId(int id) {
+        this.id = id;
     }
 
      public String getRazaoSocial() {
@@ -39,5 +41,28 @@ public class Cliente {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
+    
+    public String getTelefone() {
+        return telefone;
+    }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+ 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    // public String getSituacao() {
+    //     return situacao;
+    // }
+
+    // public void setSituacao(String situacao) {
+    //     this.situacao = situacao;
+    // }
 }

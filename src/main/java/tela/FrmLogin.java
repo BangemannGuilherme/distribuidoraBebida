@@ -5,19 +5,20 @@
  */
 package tela;
 
-import dao.FuncionarioDAO;
-import entidade.Funcionario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
+import entidade.Login;
+import dao.LoginDAO;
 import tela.FrmJanelaPrincipal;
 
-public class Login extends javax.swing.JFrame {
+public class FrmLogin extends javax.swing.JFrame {
     
     int cod = 0;
     private ImageIcon logo;
 
     
-    public Login() {
+    public FrmLogin() {
         initComponents();
 //        logo = new ImageIcon(getClass().getResource("/resources/essential-drinks-logo.png"));        
     }
@@ -39,14 +40,14 @@ public class Login extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         lblAviso = new javax.swing.JLabel();
-        lblJeem = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
 
         jDesktopPane1.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblUsuario.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("Usuário:");
 
@@ -56,7 +57,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        lblSenha.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
 
@@ -81,9 +82,7 @@ public class Login extends javax.swing.JFrame {
         lblAviso.setForeground(new java.awt.Color(255, 255, 255));
         lblAviso.setText("*Digite o usuário e a senha existentes para acessar a aplicação. ");
 
-        lblJeem.setBackground(new java.awt.Color(255, 255, 255));
-        lblJeem.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        lblJeem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/essential-drinks-logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/essential-drinks-logo.png"))); // NOI18N
 
         jDesktopPane1.setLayer(lblUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(tfdUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -92,42 +91,42 @@ public class Login extends javax.swing.JFrame {
         jDesktopPane1.setLayer(btnEntrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnFechar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblAviso, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lblJeem, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                            .addComponent(lblSenha)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                            .addComponent(lblUsuario)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(lblJeem)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(lblSenha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(lblUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(tfdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblJeem)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(44, 44, 44)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
                     .addComponent(tfdUsuario))
@@ -163,16 +162,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_tfdUsuarioActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        Funcionario funcionario = new Funcionario();
+        Login login = new Login();
         String valor = new String(tfdSenha.getPassword());
         System.out.println(valor);
-        funcionario.setUsuario(tfdUsuario.getText());
-        funcionario.setSenha(valor);
+        login.setUsuario(tfdUsuario.getText());
+        login.setSenha(valor);
        
         // salvar
-        FuncionarioDAO apDAO = new FuncionarioDAO();
+        LoginDAO apDAO = new LoginDAO();
 
-        if (apDAO.logar(funcionario)) {
+        if (apDAO.logar(login)) {
             // exibir msg
             JOptionPane.showMessageDialog(null, "Logado com sucesso");
 
@@ -201,8 +200,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnFechar;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAviso;
-    private javax.swing.JLabel lblJeem;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPasswordField tfdSenha;

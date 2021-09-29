@@ -33,16 +33,11 @@ public class LoginDAO implements IDAOT <Login> {
                         + "default, " 
                         + "'" + o.getUsuario() + "', "
                         + "'" + senhaMd5 + "', "
-                        + "'" + o.getSituacao() + "'"
-                        + "'" + o.getFuncionario_id() + "'"
                         + ")";
             } else {
                 sql = "UPDATE login "
                         + "SET usuario = '" + o.getUsuario() + "' "
-                        + ",email = '" + o.getEmail() + "' "
-                        + ",usuario = '" + o.getUsuario() + "' "
                         + ",senha = '" + senhaMd5+ "' "
-                        + ",cpf = '" + o.getCpf() + "' "
                         + "WHERE id = " + o.getId();
             }/*
                 sql = "INSERT INTO login  (id, usuario, email, usuario, senha, cpf) VALUES ('"
@@ -100,19 +95,13 @@ public class LoginDAO implements IDAOT <Login> {
             if (o.getId() == 0) {
                 sql = "UPDATE login "
                         + "SET usuario = '" + o.getUsuario() + "' "
-                        + ",email = '" + o.getEmail() + "' "
-                        + ",usuario = '" + o.getUsuario() + "' "
                         + ",senha = '" + senhaMd5+ "' "
-                        + ",cpf = '" + o.getCpf() + "' "
                         + "WHERE id = " + o.getId();
             } else {
                 sql = "INSERT INTO login VALUES ( "
                         + "default, " 
                         + "'" + o.getUsuario() + "', "
-                        + "'" + o.getEmail() + "', "
-                        + "'" + o.getUsuario() + "', "
                         + "'" + senhaMd5 + "', "
-                        + "'" + o.getCpf() + "'"
                         + ")";
             }
                         System.out.println("SQL: " + sql);
@@ -182,10 +171,7 @@ public class LoginDAO implements IDAOT <Login> {
                 // obtem dados do RS
                 login.setId(resultadoQ.getInt("id"));
                 login.setUsuario(resultadoQ.getString("usuario"));
-                login.setEmail(resultadoQ.getString("email"));
-                login.setUsuario(resultadoQ.getString("usuario"));
                 login.setSenha(resultadoQ.getString("senha"));
-                login.setCpf(resultadoQ.getString("cpf"));
             }
 
         } catch (Exception e) {
@@ -199,13 +185,10 @@ public class LoginDAO implements IDAOT <Login> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[6];
+        Object[] cabecalho = new Object[3];
         cabecalho[0] = "id";
         cabecalho[1] = "usuario";
-        cabecalho[2] = "email";
-        cabecalho[3] = "usuario";
-        cabecalho[4] = "senha";
-        cabecalho[5] = "cpf";
+        cabecalho[2] = "senha";
         
 
         // cria matriz de acordo com nº de registros da tabela
@@ -218,7 +201,7 @@ public class LoginDAO implements IDAOT <Login> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][6];
+            dadosTabela = new Object[resultadoQ.getInt(1)][3];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar: " + e);
@@ -238,11 +221,8 @@ public class LoginDAO implements IDAOT <Login> {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("usuario");
-                dadosTabela[lin][2] = resultadoQ.getString("email");
-                dadosTabela[lin][3] = resultadoQ.getString("usuario");
-                dadosTabela[lin][4] = resultadoQ.getString("senha");
-                dadosTabela[lin][5] = resultadoQ.getString("cpf");
-             
+                dadosTabela[lin][2] = resultadoQ.getString("senha");
+
                       
 
                 // caso a coluna precise exibir uma imagem

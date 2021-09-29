@@ -27,17 +27,21 @@ public class ClienteDAO implements IDAOT <Cliente>{
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "";
-            if (o.getCod() == 0) {
+            if (o.getId() == 0) {
                 sql = "INSERT INTO cliente VALUES ( "
                         + "default, " 
                         + "'" + o.getRazaoSocial() + "', " 
-                        + "'" + o.getCnpj()+ "'"
+                        + "'" + o.getCnpj()+ "', "
+                        + "'" + o.getTelefone()+ "', "
+                        + "'" + o.getEmail()+ "'"
                         + ")";
             } else {
                 sql = "UPDATE cliente "
                         + "SET razaosocial = '" + o.getRazaoSocial() + "' "
                         + ",cnpj = '" + o.getCnpj() + "' "
-                        + "WHERE cod = " + o.getCod();
+                        + ",telefone = '" + o.getTelefone() + "' "
+                        + ",email = '" + o.getEmail() + "' "
+                        + "WHERE id = " + o.getId();
             }
 
             System.out.println("SQL: " + sql);
@@ -47,7 +51,7 @@ public class ClienteDAO implements IDAOT <Cliente>{
             return true;
 
         } catch (Exception e) {
-            System.out.println("Erro salvar apresentação = " + e);
+            System.out.println("Erro ao salvar apresentação = " + e);
             return false;
         }
     }
@@ -58,13 +62,13 @@ public class ClienteDAO implements IDAOT <Cliente>{
     }
 
     @Override
-    public boolean excluir(int cod) {
+    public boolean excluir(int id) {
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "DELETE "
                     + "FROM cliente "
-                    + "WHERE cod = " + cod;
+                    + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
 
@@ -90,7 +94,7 @@ public class ClienteDAO implements IDAOT <Cliente>{
     }
 
     @Override
-    public Cliente consultarId(int cod) {
+    public Cliente consultarId(int id) {
         Cliente cliente = null; //= new Apresentacao();
 
         try {
@@ -98,7 +102,7 @@ public class ClienteDAO implements IDAOT <Cliente>{
 
             String sql = "SELECT * "
                     + "FROM cliente "
-                    + "WHERE cod = " + cod;
+                    + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
 
@@ -110,9 +114,11 @@ public class ClienteDAO implements IDAOT <Cliente>{
                 cliente = new Cliente();
 
                 // obtem dados do RS
-                cliente.setCod(resultadoQ.getInt("cod"));
+                cliente.setId(resultadoQ.getInt("id"));
                 cliente.setRazaoSocial(resultadoQ.getString("razaosocial"));
                 cliente.setCnpj(resultadoQ.getString("cnpj"));
+                cliente.setTelefone(resultadoQ.getString("telefone"));
+                cliente.setEmail(resultadoQ.getString("email"));
             }
 
         } catch (Exception e) {
@@ -127,10 +133,13 @@ public class ClienteDAO implements IDAOT <Cliente>{
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[3];
-        cabecalho[0] = "Código";
+        Object[] cabecalho = new Object[5];
+        cabecalho[0] = "ID";
         cabecalho[1] = "RazaoSocial";
         cabecalho[2] = "Cnpj";
+        cabecalho[3] = "Telefone";
+        cabecalho[4] = "Email";
+
 
         // cria matriz de acordo com nº de registros da tabela
         try {
@@ -142,7 +151,7 @@ public class ClienteDAO implements IDAOT <Cliente>{
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][3];
+            dadosTabela = new Object[resultadoQ.getInt(1)][5];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar: " + e);
@@ -160,9 +169,11 @@ public class ClienteDAO implements IDAOT <Cliente>{
 
             while (resultadoQ.next()) {
                 System.out.println(resultadoQ.getString("razaosocial"));
-                dadosTabela[lin][0] = resultadoQ.getString("cod");
+                dadosTabela[lin][0] = resultadoQ.getString("id");
                 dadosTabela[lin][1] = resultadoQ.getString("razaosocial");
                 dadosTabela[lin][2] = resultadoQ.getString("cnpj");
+                dadosTabela[lin][3] = resultadoQ.getString("telefone");
+                dadosTabela[lin][4] = resultadoQ.getString("email");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {

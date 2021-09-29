@@ -14,8 +14,8 @@ public class Login {
     private int id;
     private String usuario;
     private String senha;
-    private char situacao;
-    private String funcionario_id;
+    // private String situacao;
+    //private String funcionario_id;
 
     public int getId() {
         return id;
@@ -41,21 +41,21 @@ public class Login {
         this.senha = senha;
     }
 
-    public char getSituacao() {
-        return situacao;
-    }
+    // public String getSituacao() {
+    //     return situacao;
+    // }
 
-    public void setSituacao(char situacao) {
-        this.situacao = situacao;
-    }
+    // public void setSituacao(String situacao) {
+    //     this.situacao = situacao;
+    // }
 
-    public String getFuncionario_id() {
+    /*public String getFuncionario_id() {
         return funcionario_id;
     }
 
     public void setFuncionario_id(String funcionario_id) {
         this.funcionario_id = funcionario_id;
-    }
+    }*/
 }
 
    

@@ -3,11 +3,10 @@
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cliente (
   id SERIAL NOT NULL,
-  razao_social VARCHAR(100) NOT NULL,
-  tel VARCHAR(100) NOT NULL,
+  razaosocial VARCHAR(100) NOT NULL,
+  telefone VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   cnpj VARCHAR(100) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
   PRIMARY KEY (id))
 ;
 
@@ -21,7 +20,6 @@ CREATE TABLE IF NOT EXISTS fornecedor (
   tel VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   cnpj VARCHAR(100) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
   PRIMARY KEY (id))
 ;
 
@@ -35,7 +33,6 @@ CREATE TABLE IF NOT EXISTS funcionario (
   tel VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   cpf VARCHAR(100) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
   PRIMARY KEY (id))
 ;
 
@@ -47,14 +44,7 @@ CREATE TABLE IF NOT EXISTS login (
   id SERIAL NOT NULL,
   usuario VARCHAR(100) NOT NULL,
   senha VARCHAR(100) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
-  funcionario_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_login_funcionario
-    FOREIGN KEY (funcionario_id)
-    REFERENCES funcionario (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (id))
 ;
 
 
@@ -232,6 +222,6 @@ CREATE TABLE IF NOT EXISTS compra_item (
     ON UPDATE NO ACTION)
 ;
 
-INSERT INTO funcionario (id, nome, tel, email, cpf, situacao) VALUES ('1', 'Administrador', '(55) 95555-5555', 'admin@admin.com', '000.000.000-00', 'a') ON CONFLICT DO NOTHING;
+INSERT INTO funcionario (id, nome, tel, email, cpf) VALUES ('1', 'Administrador', '(55) 95555-5555', 'admin@admin.com', '000.000.000-00') ON CONFLICT DO NOTHING;
 
-INSERT INTO login(id, usuario, senha, situacao, funcionario_id) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'a', '1') ON CONFLICT DO NOTHING;
+INSERT INTO login(id, usuario, senha) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3') ON CONFLICT DO NOTHING;

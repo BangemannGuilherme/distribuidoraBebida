@@ -1,134 +1,79 @@
 package dao;
 
 import apoio.ConexaoBD;
-import entidade.Login;
-import java.util.ArrayList;
-import apoio.IDAOT;
-import apoio.ConvertPasswordToMD5;
+import entidade.Fornecedor;
 import java.awt.Color;
 import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import apoio.IDAOT;
 
+/**
+ *
+ *
+ */
+public class FornecedorDAO implements IDAOT <Fornecedor>{
 
-public class LoginDAO implements IDAOT <Login> {
-     ConvertPasswordToMD5 md5 = new ConvertPasswordToMD5();
     private ResultSet resultadoQ = null;
-    @Override
-    public boolean salvar(Login o) {
-         try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            String senhaMd5 = md5.getMd5(o.getSenha());
-         
-            String sql = "";
-            if (o.getId() == 0) {
-                sql = "INSERT INTO login VALUES ( "
-                        + "default, " 
-                        + "'" + o.getUsuario() + "', "
-                        + "'" + senhaMd5 + "'"
-                        + ")";
-            } else {
-                sql = "UPDATE login "
-                        + "SET usuario = '" + o.getUsuario() + "' "
-                        + ",senha = '" + senhaMd5+ "' "
-                        + "WHERE id = " + o.getId();
-            }/*
-                sql = "INSERT INTO login  (id, usuario, email, usuario, senha, cpf) VALUES ('"
-                         + "default, " + "','" + o.getUsuario() + "','" + o.getEmail()+"','" + o.getUsuario()+"','" + senhaMd5+"','" + o.getCpf()+"')";
-            }*/
-
-            System.out.println("SQL: " + sql);
-
-            int resultadoQ = st.executeUpdate(sql);
-
-            return true;
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar inserção = " + e);
-            return false;
-        }
-    }
-    
-    public boolean logar(Login o){
-          try {
-            
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-           
-            String senhaMd5 = md5.getMd5(o.getSenha());
-              System.out.println(senhaMd5);
-            String sql = "SELECT * "
-                    + "FROM login "
-                    + "WHERE usuario = '" + o.getUsuario() + "'AND senha = '" + senhaMd5 + "'";
-
-            System.out.println("SQL: " + sql);
-
-            // executa consulta
-            resultadoQ = st.executeQuery(sql);
-
-            // avanca ResultSet
-            if (resultadoQ.next()) {
-                 return true;
-            }else{
-                 return false;
-            }
-           
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar: " + e);
-            return false;
-        }
-    }
 
     @Override
-    public boolean atualizar(Login o) {
+    public boolean salvar(Fornecedor o) {
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            String senhaMd5 = md5.getMd5(o.getSenha());
-         
+
             String sql = "";
             if (o.getId() == 0) {
-                sql = "UPDATE login "
-                        + "SET usuario = '" + o.getUsuario() + "' "
-                        + ",senha = '" + senhaMd5+ "' "
-                        + "WHERE id = " + o.getId();
-            } else {
-                sql = "INSERT INTO login VALUES ( "
+                sql = "INSERT INTO fornecedor VALUES ( "
                         + "default, " 
-                        + "'" + o.getUsuario() + "', "
-                        + "'" + senhaMd5 + "'"
+                        + "'" + o.getRazaoSocial() + "', " 
+                        + "'" + o.getCnpj()+ "', "
+                        + "'" + o.getTelefone()+ "', "
+                        + "'" + o.getEmail()+ "'"
                         + ")";
+            } else {
+                sql = "UPDATE fornecedor "
+                        + "SET razaosocial = '" + o.getRazaoSocial() + "' "
+                        + ",cnpj = '" + o.getCnpj() + "' "
+                        + ",telefone = '" + o.getTelefone() + "' "
+                        + ",email = '" + o.getEmail() + "' "
+                        + "WHERE id = " + o.getId();
             }
-                        System.out.println("SQL: " + sql);
 
-            int resultadoQ = st.executeUpdate(sql);
+            System.out.println("SQL: " + sql);
+
+            int resultado = st.executeUpdate(sql);
 
             return true;
 
         } catch (Exception e) {
-            System.out.println("Erro atualizar inserção = " + e);
+            System.out.println("Erro ao salvar apresentação = " + e);
             return false;
         }
+    }
+
+    @Override
+    public boolean atualizar(Fornecedor o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean excluir(int id) {
-       try {
+        try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "DELETE "
-                    + "FROM login "
+                    + "FROM fornecedor "
                     + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
 
             // executa consulta - exclusao
-            int resultadoQ = st.executeUpdate(sql);
+            int resultado = st.executeUpdate(sql);
 
             return true;
 
@@ -139,24 +84,24 @@ public class LoginDAO implements IDAOT <Login> {
     }
 
     @Override
-    public ArrayList<Login> consultarTodos() {
+    public ArrayList<Fornecedor> consultarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Login> consultar(String criterio) {
+    public ArrayList<Fornecedor> consultar(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Login consultarId(int id) {
-       Login login = null; //= new Apresentacao();
+    public Fornecedor consultarId(int id) {
+        Fornecedor fornecedor = null; //= new Apresentacao();
 
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "SELECT * "
-                    + "FROM login "
+                    + "FROM fornecedor "
                     + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
@@ -166,42 +111,47 @@ public class LoginDAO implements IDAOT <Login> {
 
             // avanca ResultSet
             if (resultadoQ.next()) {
-                login = new Login();
+                fornecedor = new Fornecedor();
 
                 // obtem dados do RS
-                login.setId(resultadoQ.getInt("id"));
-                login.setUsuario(resultadoQ.getString("usuario"));
-                login.setSenha(resultadoQ.getString("senha"));
+                fornecedor.setId(resultadoQ.getInt("id"));
+                fornecedor.setRazaoSocial(resultadoQ.getString("razaosocial"));
+                fornecedor.setCnpj(resultadoQ.getString("cnpj"));
+                fornecedor.setTelefone(resultadoQ.getString("telefone"));
+                fornecedor.setEmail(resultadoQ.getString("email"));
             }
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar: " + e);
         }
 
-        return login;
+        return fornecedor;
     }
-     public void popularTabela(JTable tabela, String criterio) {
+
+    public void popularTabela(JTable tabela, String criterio) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[3];
-        cabecalho[0] = "id";
-        cabecalho[1] = "usuario";
-        cabecalho[2] = "senha";
-        
+        Object[] cabecalho = new Object[5];
+        cabecalho[0] = "ID";
+        cabecalho[1] = "RazaoSocial";
+        cabecalho[2] = "Cnpj";
+        cabecalho[3] = "Telefone";
+        cabecalho[4] = "Email";
+
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) "
-                    + "FROM login "
+                    + "FROM fornecedor "
                     + "WHERE "
-                    + "usuario ILIKE '%" + criterio + "%'");
+                    + "razaosocial ILIKE '%" + criterio + "%'");
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][3];
+            dadosTabela = new Object[resultadoQ.getInt(1)][5];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar: " + e);
@@ -213,17 +163,17 @@ public class LoginDAO implements IDAOT <Login> {
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT * "
-                    + "FROM login "
+                    + "FROM fornecedor "
                     + "WHERE "
-                    + "usuario ILIKE '%" + criterio + "%'");
+                    + "razaosocial ILIKE '%" + criterio + "%'");
 
             while (resultadoQ.next()) {
-
-                dadosTabela[lin][0] = resultadoQ.getInt("id");
-                dadosTabela[lin][1] = resultadoQ.getString("usuario");
-                dadosTabela[lin][2] = resultadoQ.getString("senha");
-
-                      
+                System.out.println(resultadoQ.getString("razaosocial"));
+                dadosTabela[lin][0] = resultadoQ.getString("id");
+                dadosTabela[lin][1] = resultadoQ.getString("razaosocial");
+                dadosTabela[lin][2] = resultadoQ.getString("cnpj");
+                dadosTabela[lin][3] = resultadoQ.getString("telefone");
+                dadosTabela[lin][4] = resultadoQ.getString("email");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
@@ -276,11 +226,11 @@ public class LoginDAO implements IDAOT <Login> {
                     column.setPreferredWidth(17);
                     break;
                 case 1:
-                    column.setPreferredWidth(140);
+                    column.setPreferredWidth(100);
                     break;
-//                case 2:
-//                    column.setPreferredWidth(14);
-//                    break;
+                case 2:
+                    column.setPreferredWidth(54);
+                    break;
             }
         }
         // renderizacao das linhas da tabela = mudar a cor
@@ -292,7 +242,7 @@ public class LoginDAO implements IDAOT <Login> {
                 super.getTableCellRendererComponent(table, value, isSelected,
                         hasFocus, row, column);
                 if (row % 2 == 0) {
-                    setBackground(Color.GREEN);
+                    setBackground(Color.RED);
                 } else {
                     setBackground(Color.LIGHT_GRAY);
                 }
@@ -300,7 +250,4 @@ public class LoginDAO implements IDAOT <Login> {
             }
         });*/
     }
-    
-    
-    
 }

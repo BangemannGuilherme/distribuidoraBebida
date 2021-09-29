@@ -5,8 +5,8 @@
  */
 package tela;
 
-import dao.ClienteDAO;
-import entidade.Cliente;
+import dao.FornecedorDAO;
+import entidade.Fornecedor;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -22,20 +22,20 @@ import apoio.Formatacao;
 import apoio.Validacao;
 import java.awt.Color;
 
-public class IfrCliente extends javax.swing.JInternalFrame {
+public class IfrFornecedor extends javax.swing.JInternalFrame {
 
     int id = 0;
 
     /**
      * Creates new form IfrApresentacao
      */
-    public IfrCliente() {
+    public IfrFornecedor() {
         initComponents();
         
         Formatacao.formatarCnpj(tfdCnpj);
         
         
-        new ClienteDAO().popularTabela(tblCliente, "");
+        new FornecedorDAO().popularTabela(tblFornecedor, "");
     }
 
     /**
@@ -71,12 +71,12 @@ public class IfrCliente extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblFornecedor = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
 
         jLabel8.setText("jLabel8");
 
-        setTitle("Cadastro: Cliente");
+        setTitle("Cadastro: Fornecedor");
 
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblFornecedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -230,7 +230,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblCliente);
+        jScrollPane1.setViewportView(tblFornecedor);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -306,17 +306,17 @@ public class IfrCliente extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
                
-        Cliente cliente = new Cliente();
-        cliente.setRazaoSocial(tfdRazaoSocial.getText());
-        cliente.setCnpj(/*Formatacao.removerFormatacao(*/tfdCnpj.getText()/*)*/);
-        cliente.setTelefone(tfdTelefone.getText());
-        cliente.setEmail(tfdEmail.getText());
-        cliente.setId(id);
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setRazaoSocial(tfdRazaoSocial.getText());
+        fornecedor.setCnpj(/*Formatacao.removerFormatacao(*/tfdCnpj.getText()/*)*/);
+        fornecedor.setTelefone(tfdTelefone.getText());
+        fornecedor.setEmail(tfdEmail.getText());
+        fornecedor.setId(id);
 
 
       
         // salvar
-        ClienteDAO apDAO = new ClienteDAO();
+        FornecedorDAO apDAO = new FornecedorDAO();
         
         
         if (tfdCnpj.getText().trim().length() == 18) {
@@ -331,10 +331,10 @@ public class IfrCliente extends javax.swing.JInternalFrame {
             } else {
             
             boolean retorno = false;
-            if (cliente.getId() == 0) {
-                retorno = apDAO.salvar(cliente);
+            if (fornecedor.getId() == 0) {
+                retorno = apDAO.salvar(fornecedor);
             } else {
-                retorno = apDAO.salvar(cliente);
+                retorno = apDAO.salvar(fornecedor);
             }
 
             if (retorno == true) {
@@ -348,7 +348,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
 
                 id = 0;
             
-                new ClienteDAO().popularTabela(tblCliente, "");
+                new FornecedorDAO().popularTabela(tblFornecedor, "");
             } else {
                 JOptionPane.showMessageDialog(null, "Problemas ao salvar registro!");
             }
@@ -358,7 +358,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
         }
         
         
-        /*if (apDAO.salvar(cliente)) {
+        /*if (apDAO.salvar(fornecedor)) {
             // exibir msg
             JOptionPane.showMessageDialog(null, "Registro salvo com sucesso!");
 
@@ -381,16 +381,16 @@ public class IfrCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        new ClienteDAO().popularTabela(tblCliente, tfdBusca.getText());
+        new FornecedorDAO().popularTabela(tblFornecedor, tfdBusca.getText());
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        String idString = String.valueOf(tblCliente.getValueAt(tblCliente.getSelectedRow(), 0));
+        String idString = String.valueOf(tblFornecedor.getValueAt(tblFornecedor.getSelectedRow(), 0));
 
         id = Integer.parseInt(idString);
 
-        ClienteDAO apDAO = new ClienteDAO();
-        Cliente ap = apDAO.consultarId(id);
+        FornecedorDAO apDAO = new FornecedorDAO();
+        Fornecedor ap = apDAO.consultarId(id);
 
         if (ap != null) {
             tfdRazaoSocial.setText(ap.getRazaoSocial());
@@ -407,16 +407,16 @@ public class IfrCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        String idString = String.valueOf(tblCliente.getValueAt(tblCliente.getSelectedRow(), 0));
+        String idString = String.valueOf(tblFornecedor.getValueAt(tblFornecedor.getSelectedRow(), 0));
 
         id = Integer.parseInt(idString);
 
-        ClienteDAO apDAO = new ClienteDAO();
+        FornecedorDAO apDAO = new FornecedorDAO();
 
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?") == JOptionPane.OK_OPTION) {
             if (apDAO.excluir(id)) {
                 JOptionPane.showMessageDialog(null, "Registro excluído com sucesso!");
-                new ClienteDAO().popularTabela(tblCliente, tfdBusca.getText());
+                new FornecedorDAO().popularTabela(tblFornecedor, tfdBusca.getText());
             } else {
                 JOptionPane.showMessageDialog(null, "Problemas ao excluir registro!");
             }
@@ -458,7 +458,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblStatusCnpj;
-    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblFornecedor;
     private javax.swing.JTextField tfdBusca;
     private javax.swing.JFormattedTextField tfdCnpj;
     private javax.swing.JTextField tfdEmail;

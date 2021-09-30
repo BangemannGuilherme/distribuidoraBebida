@@ -10,7 +10,7 @@ package entidade;
  * @author Gui
  */
 public class Produto {
-    private int cod;
+    private int id;
     private String nome;
     private String marca;
     private String recipiente;
@@ -19,12 +19,12 @@ public class Produto {
 
     
 
-    public int getCod() {
-        return cod;
+    public int getId() {
+        return id;
     }
 
-    public void setCod(int cod) {
-        this.cod = cod;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

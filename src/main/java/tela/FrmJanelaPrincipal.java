@@ -91,7 +91,7 @@ public class FrmJanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Pessoa");
+        jMenuItem1.setText("Funcionario");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -150,9 +150,9 @@ public class FrmJanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        IfrFuncionario pessoa = new IfrFuncionario();
-        jDesktopPane1.add(pessoa);
-        pessoa.setVisible(true);
+        IfrFuncionario funcionario = new IfrFuncionario();
+        jDesktopPane1.add(funcionario);
+        funcionario.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed

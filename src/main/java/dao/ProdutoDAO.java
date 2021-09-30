@@ -27,7 +27,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "";
-            if (o.getCod() == 0) {
+            if (o.getId() == 0) {
                 sql = "INSERT INTO produto VALUES ( "
                         + "default, " 
                         + "'" + o.getNome() + "', " 
@@ -43,7 +43,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
                         + ",recipiente = '" + o.getRecipiente() + "' "
                         + ",volume = '" + o.getVolume() + "' "
                         + ",valor = '" + o.getValor() + "' "
-                        + "WHERE cod = " + o.getCod();
+                        + "WHERE id = " + o.getId();
             }
 
             System.out.println("SQL: " + sql);
@@ -64,13 +64,13 @@ public class ProdutoDAO implements IDAOT <Produto>{
     }
 
     @Override
-    public boolean excluir(int cod) {
+    public boolean excluir(int id) {
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = "DELETE "
                     + "FROM produto "
-                    + "WHERE cod = " + cod;
+                    + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
 
@@ -96,7 +96,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
     }
 
     @Override
-    public Produto consultarId(int cod) {
+    public Produto consultarId(int id) {
         Produto energy = null; //= new Apresentacao();
 
         try {
@@ -104,7 +104,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
 
             String sql = "SELECT * "
                     + "FROM produto "
-                    + "WHERE cod = " + cod;
+                    + "WHERE id = " + id;
 
             System.out.println("SQL: " + sql);
 
@@ -116,7 +116,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
                 energy = new Produto();
 
                 // obtem dados do RS
-                energy.setCod(resultadoQ.getInt("cod"));
+                energy.setId(resultadoQ.getInt("id"));
                 energy.setNome(resultadoQ.getString("nome"));
                 energy.setMarca(resultadoQ.getString("marca"));
                 energy.setRecipiente(resultadoQ.getString("recipiente"));
@@ -172,7 +172,7 @@ public class ProdutoDAO implements IDAOT <Produto>{
 
             while (resultadoQ.next()) {
                 System.out.println(resultadoQ.getString("marca"));
-                dadosTabela[lin][0] = resultadoQ.getString("cod");
+                dadosTabela[lin][0] = resultadoQ.getString("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
                 dadosTabela[lin][2] = resultadoQ.getString("marca");
                 dadosTabela[lin][3] = resultadoQ.getString("recipiente");

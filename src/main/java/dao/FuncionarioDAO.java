@@ -19,31 +19,27 @@ import javax.swing.table.TableColumn;
 
 
 public class FuncionarioDAO implements IDAOT <Funcionario> {
-     ConvertPasswordToMD5 md5 = new ConvertPasswordToMD5();
     private ResultSet resultadoQ = null;
     @Override
     public boolean salvar(Funcionario o) {
          try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            String senhaMd5 = md5.getMd5(o.getSenha());
          
             String sql = "";
             if (o.getId() == 0) {
                 sql = "INSERT INTO funcionario VALUES ( "
                         + "default, " 
                         + "'" + o.getNome() + "', "
-                        + "'" + o.getEmail() + "', "
-                        + "'" + o.getUsuario() + "', "
-                        + "'" + senhaMd5 + "', "
-                        + "'" + o.getCpf() + "'"
+                        + "'" + o.getCpf() + "', "
+                        + "'" + o.getTelefone() + "', "
+                        + "'" + o.getEmail() + "'"
                         + ")";
             } else {
                 sql = "UPDATE funcionario "
                         + "SET nome = '" + o.getNome() + "' "
-                        + ",email = '" + o.getEmail() + "' "
-                        + ",usuario = '" + o.getUsuario() + "' "
-                        + ",senha = '" + senhaMd5+ "' "
                         + ",cpf = '" + o.getCpf() + "' "
+                        + ",telefone = '" + o.getTelefone() + "' "
+                        + ",email = '" + o.getEmail() + "' "
                         + "WHERE id = " + o.getId();
             }/*
                 sql = "INSERT INTO funcionario  (id, nome, email, usuario, senha, cpf) VALUES ('"
@@ -61,59 +57,27 @@ public class FuncionarioDAO implements IDAOT <Funcionario> {
             return false;
         }
     }
-    
-    public boolean logar(Funcionario o){
-          try {
-            
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-           
-            String senhaMd5 = md5.getMd5(o.getSenha());
-              System.out.println(senhaMd5);
-            String sql = "SELECT * "
-                    + "FROM funcionario "
-                    + "WHERE usuario = '" + o.getUsuario() + "'AND senha = '" + senhaMd5 + "'";
-
-            System.out.println("SQL: " + sql);
-
-            // executa consulta
-            resultadoQ = st.executeQuery(sql);
-
-            // avanca ResultSet
-            if (resultadoQ.next()) {
-                 return true;
-            }else{
-                 return false;
-            }
-           
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar: " + e);
-            return false;
-        }
-    }
 
     @Override
     public boolean atualizar(Funcionario o) {
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            String senhaMd5 = md5.getMd5(o.getSenha());
          
             String sql = "";
             if (o.getId() == 0) {
                 sql = "UPDATE funcionario "
                         + "SET nome = '" + o.getNome() + "' "
-                        + ",email = '" + o.getEmail() + "' "
-                        + ",usuario = '" + o.getUsuario() + "' "
-                        + ",senha = '" + senhaMd5+ "' "
                         + ",cpf = '" + o.getCpf() + "' "
+                        + ",telefone = '" + o.getTelefone() + "' "
+                        + ",email = '" + o.getEmail() + "' "
                         + "WHERE id = " + o.getId();
             } else {
                 sql = "INSERT INTO funcionario VALUES ( "
                         + "default, " 
                         + "'" + o.getNome() + "', "
-                        + "'" + o.getEmail() + "', "
-                        + "'" + o.getUsuario() + "', "
-                        + "'" + senhaMd5 + "', "
-                        + "'" + o.getCpf() + "'"
+                        + "'" + o.getCpf() + "', "
+                        + "'" + o.getTelefone() + "', "
+                        + "'" + o.getEmail() + "'"
                         + ")";
             }
                         System.out.println("SQL: " + sql);
@@ -183,10 +147,9 @@ public class FuncionarioDAO implements IDAOT <Funcionario> {
                 // obtem dados do RS
                 funcionario.setId(resultadoQ.getInt("id"));
                 funcionario.setNome(resultadoQ.getString("nome"));
-                funcionario.setEmail(resultadoQ.getString("email"));
-                funcionario.setUsuario(resultadoQ.getString("usuario"));
-                funcionario.setSenha(resultadoQ.getString("senha"));
                 funcionario.setCpf(resultadoQ.getString("cpf"));
+                funcionario.setTelefone(resultadoQ.getString("telefone"));
+                funcionario.setEmail(resultadoQ.getString("email"));               
             }
 
         } catch (Exception e) {
@@ -200,13 +163,12 @@ public class FuncionarioDAO implements IDAOT <Funcionario> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[6];
+        Object[] cabecalho = new Object[5];
         cabecalho[0] = "id";
         cabecalho[1] = "nome";
-        cabecalho[2] = "email";
-        cabecalho[3] = "usuario";
-        cabecalho[4] = "senha";
-        cabecalho[5] = "cpf";
+        cabecalho[2] = "cpf";
+        cabecalho[3] = "telefone";
+        cabecalho[4] = "email";
         
 
         // cria matriz de acordo com nº de registros da tabela
@@ -219,7 +181,7 @@ public class FuncionarioDAO implements IDAOT <Funcionario> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][6];
+            dadosTabela = new Object[resultadoQ.getInt(1)][5];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar: " + e);
@@ -239,10 +201,9 @@ public class FuncionarioDAO implements IDAOT <Funcionario> {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
-                dadosTabela[lin][2] = resultadoQ.getString("email");
-                dadosTabela[lin][3] = resultadoQ.getString("usuario");
-                dadosTabela[lin][4] = resultadoQ.getString("senha");
-                dadosTabela[lin][5] = resultadoQ.getString("cpf");
+                dadosTabela[lin][2] = resultadoQ.getString("cpf");
+                dadosTabela[lin][3] = resultadoQ.getString("telefone");
+                dadosTabela[lin][4] = resultadoQ.getString("email");
              
                       
 

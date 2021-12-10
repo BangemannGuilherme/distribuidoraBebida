@@ -6,10 +6,10 @@
 package View;
 
 import DAO.CombosDAO;
-import DAO.QuartoDAO;
-import Entidade.Quarto;
-import Entidade.TipoQuarto;
-import TableModel.QuartoTableModel;
+import DAO.ProdutoDAO;
+import Entidade.Produto;
+import Entidade.TipoProduto;
+import TableModel.ProdutoTableModel;
 import Utils.JTableUtilities;
 import Utils.Validacao;
 import javax.swing.JOptionPane;
@@ -20,29 +20,29 @@ import javax.swing.SwingConstants;
  *
  * @author Gui
  */
-public class IfrQuarto extends javax.swing.JInternalFrame {
+public class IfProduto extends javax.swing.JInternalFrame {
 
-    QuartoTableModel tableModel = new QuartoTableModel();
-    int idquarto = 0;
+    ProdutoTableModel tableModel = new ProdutoTableModel();
+    int idproduto = 0;
     CombosDAO cdao;
 
     /**
-     * Creates new form IfrQuarto
+     * Creates new form IfrProduto
      */
-    public IfrQuarto() {
+    public IfProduto() {
         initComponents();
-        tblQuarto.setModel(tableModel);
-//      tblQuarto.getColumnModel().getColumn(0).setPreferredWidth(10);
-//      tblQuarto.getColumnModel().getColumn(1).setPreferredWidth(780);
-        JTableUtilities.setCellsAlignment(tblQuarto, SwingConstants.CENTER, new int[]{0, 1, 2});
-        tblQuarto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha       
+        tblProduto.setModel(tableModel);
+//      tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
+//      tblProduto.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblProduto, SwingConstants.CENTER, new int[]{0, 1, 2});
+        tblProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha       
         cdao = new CombosDAO();
         this.attCombo();
     }
 
     public void attCombo() {
-        cmbTipoQuarto.removeAllItems();
-        cdao.popularCombo("TipoQuarto", cmbTipoQuarto);
+        cmbTipoProduto.removeAllItems();
+        cdao.popularCombo("TipoProduto", cmbTipoProduto);
     }
 
     /**
@@ -54,31 +54,32 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlQuarto = new javax.swing.JTabbedPane();
+        pnlProduto = new javax.swing.JTabbedPane();
         pnlCadastrar = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tfdMostraId = new javax.swing.JTextField();
-        cmbTipoQuarto = new javax.swing.JComboBox<>();
-        spnAndar = new javax.swing.JSpinner();
-        tfdNumero = new javax.swing.JTextField();
-        btnTipoQuarto = new javax.swing.JButton();
+        cmbTipoProduto = new javax.swing.JComboBox<>();
+        btnTipoProduto = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txaDescricao = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tfdValor = new javax.swing.JFormattedTextField();
         pnlConsulta = new javax.swing.JPanel();
         btnExcluir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblQuarto = new javax.swing.JTable();
+        tblProduto = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
         tfdBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
-        setTitle("Cadastro de Quartos");
+        setTitle("Cadastro de Produtos");
         setPreferredSize(new java.awt.Dimension(992, 737));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/save-30.png"))); // NOI18N
@@ -91,27 +92,29 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Código:");
 
-        jLabel3.setText("Número:");
-
-        jLabel4.setText("Andar:");
-
-        jLabel5.setText("Tipo de quarto:");
+        jLabel5.setText("Tipo de produto:");
 
         tfdMostraId.setEditable(false);
 
-        cmbTipoQuarto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        spnAndar.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
-
-        btnTipoQuarto.setText("Buscar Tipos de Quartos");
-        btnTipoQuarto.addActionListener(new java.awt.event.ActionListener() {
+        btnTipoProduto.setText("Buscar Tipos de Produtos");
+        btnTipoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTipoQuartoActionPerformed(evt);
+                btnTipoProdutoActionPerformed(evt);
             }
         });
 
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("Campos marcados com '*' são de preenchimento obrigatório.");
+
+        txaDescricao.setColumns(20);
+        txaDescricao.setRows(5);
+        jScrollPane2.setViewportView(txaDescricao);
+
+        jLabel7.setText("Descrição: *");
+
+        jLabel8.setText("Valor de venda: (R$) *");
 
         javax.swing.GroupLayout pnlCadastrarLayout = new javax.swing.GroupLayout(pnlCadastrar);
         pnlCadastrar.setLayout(pnlCadastrarLayout);
@@ -126,27 +129,26 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addGroup(pnlCadastrarLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(107, 107, 107)
                         .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(pnlCadastrarLayout.createSequentialGroup()
+                        .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
                             .addGroup(pnlCadastrarLayout.createSequentialGroup()
-                                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(103, 103, 103)
-                                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfdNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlCadastrarLayout.createSequentialGroup()
-                                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addGap(70, 70, 70)
+                                .addGap(144, 144, 144)
                                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlCadastrarLayout.createSequentialGroup()
-                                        .addComponent(cmbTipoQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(btnTipoQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(spnAndar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(408, Short.MAX_VALUE))))
+                                        .addComponent(cmbTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(btnTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfdValor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlCadastrarLayout.setVerticalGroup(
             pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,27 +158,26 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(tfdNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(spnAndar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbTipoQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTipoQuarto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
+                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tfdValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTipoProduto)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(23, 23, 23))
         );
 
-        pnlQuarto.addTab("Cadastrar", pnlCadastrar);
+        pnlProduto.addTab("Cadastrar", pnlCadastrar);
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/delete-30.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -194,7 +195,7 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
             }
         });
 
-        tblQuarto.setModel(new javax.swing.table.DefaultTableModel(
+        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -205,8 +206,8 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblQuarto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(tblQuarto);
+        tblProduto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(tblProduto);
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/search-30.png"))); // NOI18N
         btnBuscar.setText("Buscar");
@@ -236,7 +237,7 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(tfdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlConsultaLayout.setVerticalGroup(
@@ -256,7 +257,7 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
         );
 
-        pnlQuarto.addTab("Consultar", pnlConsulta);
+        pnlProduto.addTab("Consultar", pnlConsulta);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cancel-30.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -277,7 +278,7 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlQuarto)
+            .addComponent(pnlProduto)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +289,7 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlQuarto)
+                .addComponent(pnlProduto)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,10 +301,10 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        if (pnlQuarto.getSelectedIndex() == 0) {
+        if (pnlProduto.getSelectedIndex() == 0) {
             limpaCampos();
         } else {
-            pnlQuarto.setSelectedIndex(0);
+            pnlProduto.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -313,35 +314,36 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (validaCampos()) {
-            QuartoDAO dao = new QuartoDAO();
-            Quarto q = new Quarto();
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto q = new Produto();
 
-            q.setId_quarto(idquarto);
-            q.setNr_quarto(tfdNumero.getText());
-            q.setNr_andar(String.valueOf(spnAndar.getValue()));
-
+            q.setId_produto(idproduto);
+            q.setDescricao(txaDescricao.getText());
+            String semPontosAdicionais = tfdValor.getText().replace(".", "");
+            q.setValor(Double.parseDouble(semPontosAdicionais.replace(',', '.')));//removendo pontos extras antes de inserir
+            
             //Pegar valor da combo ----------------------
             //-------------------------------------------
             q.setId_usuario_cadastro(1); // ID = 1 (admin)
-            q.setIe_situacao('A'); //A = Ativa
-            q.setId_tipo_quarto((TipoQuarto) cmbTipoQuarto.getSelectedItem());
+            q.setSituacao('A'); //A = Ativa
+            q.setId_tipo_produto((TipoProduto) cmbTipoProduto.getSelectedItem());
 
-            if (idquarto == 0) {
+            if (idproduto == 0) {
                 Integer returnOfSavedID = dao.save(q);
                 if (returnOfSavedID != null) {
-                    JOptionPane.showMessageDialog(null, "Quarto cadastrado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                     limpaCampos();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar quarto...", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto...", "ERRO!", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 String retorno = dao.update(q);
                 if (retorno == null) {
-                    JOptionPane.showMessageDialog(null, "Quarto atualizado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
-                    this.idquarto = 0;
+                    JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    this.idproduto = 0;
                     limpaCampos();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao atualizar quarto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar produto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -350,36 +352,36 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (tblQuarto.getSelectedRow() != -1) {
-            QuartoDAO dao = new QuartoDAO();
-            Quarto q = dao.findById((int) tableModel.getValueAt(tblQuarto.getSelectedRow(), 0));
-            q.setIe_situacao('I'); //INATIVANDO
+        if (tblProduto.getSelectedRow() != -1) {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto q = dao.findById((int) tableModel.getValueAt(tblProduto.getSelectedRow(), 0));
+            q.setSituacao('I'); //INATIVANDO
             String retorno = dao.update(q);
             if (retorno == null) {
-                JOptionPane.showMessageDialog(null, "Quarto excluído com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Produto excluído com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                 this.tableModel.updateData("");
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir quarto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro ao excluir produto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um quarto para Excluir.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um produto para Excluir.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tblQuarto.getSelectedRow() != -1) {
-            this.idquarto = (int) tableModel.getValueAt(tblQuarto.getSelectedRow(), 0);
-            Quarto quartoBusca = new QuartoDAO().findById(this.idquarto);
+        if (tblProduto.getSelectedRow() != -1) {
+            this.idproduto = (int) tableModel.getValueAt(tblProduto.getSelectedRow(), 0);
+            Produto produtoBusca = new ProdutoDAO().findById(this.idproduto);
 
-            tfdMostraId.setText(String.valueOf(idquarto));
-            tfdNumero.setText(quartoBusca.getNr_quarto());
-            spnAndar.setValue(Integer.parseInt(quartoBusca.getNr_andar()));
+            tfdMostraId.setText(String.valueOf(idproduto));
+            txaDescricao.setText(String.valueOf(tableModel.getValueAt(tblProduto.getSelectedRow(), 1)));
+            tfdValor.setText(String.valueOf(tableModel.getValueAt(tblProduto.getSelectedRow(), 2)));
 
-            cdao.definirItemCombo(cmbTipoQuarto, quartoBusca.getId_tipo_quarto());
+            cdao.definirItemCombo(cmbTipoProduto, produtoBusca.getId_tipo_produto());
             //retorna à aba de cadastro
-            pnlQuarto.setSelectedIndex(0);
+            pnlProduto.setSelectedIndex(0);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um quarto para Editar.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um produto para Editar.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -387,33 +389,31 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
         this.tableModel.updateData(tfdBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnTipoQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoQuartoActionPerformed
-        DlgTipoProduto dlgTipoQuarto = new DlgTipoProduto(this, true);
-        dlgTipoQuarto.setVisible(true);
-    }//GEN-LAST:event_btnTipoQuartoActionPerformed
+    private void btnTipoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoProdutoActionPerformed
+        DlgTipoProduto dlgTipoProduto = new DlgTipoProduto(this, true);
+        dlgTipoProduto.setVisible(true);
+    }//GEN-LAST:event_btnTipoProdutoActionPerformed
     private void limpaCampos() {
         tfdMostraId.setText("");
-        tfdNumero.setText("");
-        spnAndar.setValue(1);
-        cmbTipoQuarto.setSelectedIndex(0);
+        txaDescricao.setText("");
+        tfdValor.setText("00");
+        txaDescricao.requestFocus();
+        cmbTipoProduto.setSelectedIndex(0);
     }
 
     private boolean validaCampos() {
         boolean valido = true;
 //        int a = (int) spnAndar.getValue(); 
 //        System.out.println("<><><><><><><>  "+a);
-        if (tfdNumero.getText().length() == 0) {
+        if (txaDescricao.getText().length() == 0 || tfdValor.getText().length() == 0) {
             valido = false;
             JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
-        } else if ((int) spnAndar.getValue() <= 0) {
+        } else if (!Validacao.validarValor(tfdValor.getText())) {
+            JOptionPane.showMessageDialog(null, "O valor precisa ser maior que zero e válido", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
             valido = false;
-            JOptionPane.showMessageDialog(null, "O andar precisa ser válido.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
-        } else if (cmbTipoQuarto.getSelectedIndex() == 0) {
+        } else if (cmbTipoProduto.getSelectedIndex() == 0) {
             valido = false;
-            JOptionPane.showMessageDialog(null, "Selecione um um tipo de quarto.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
-        } else if (!Validacao.isDigit(tfdNumero.getText())) {
-            valido = false;
-            JOptionPane.showMessageDialog(null, "Insira apenas números.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um um tipo de produto.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
         }
         return valido;
     }
@@ -425,22 +425,23 @@ public class IfrQuarto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnTipoQuarto;
-    private javax.swing.JComboBox<String> cmbTipoQuarto;
+    private javax.swing.JButton btnTipoProduto;
+    private javax.swing.JComboBox<String> cmbTipoProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlCadastrar;
     private javax.swing.JPanel pnlConsulta;
-    private javax.swing.JTabbedPane pnlQuarto;
-    private javax.swing.JSpinner spnAndar;
-    private javax.swing.JTable tblQuarto;
+    private javax.swing.JTabbedPane pnlProduto;
+    private javax.swing.JTable tblProduto;
     private javax.swing.JTextField tfdBuscar;
     private javax.swing.JTextField tfdMostraId;
-    private javax.swing.JTextField tfdNumero;
+    private javax.swing.JFormattedTextField tfdValor;
+    private javax.swing.JTextArea txaDescricao;
     // End of variables declaration//GEN-END:variables
 }

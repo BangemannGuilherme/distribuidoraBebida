@@ -442,7 +442,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReservaActionPerformed
 
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
-        IfrProduto ifrProduto = new IfrProduto();
+        IfrProduto1 ifrProduto = new IfrProduto1();
         dskPrincipal.add(ifrProduto);
         ifrProduto.setVisible(true);
     }//GEN-LAST:event_btnProdutoActionPerformed
@@ -469,7 +469,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuario2ActionPerformed
 
     private void btnQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuartoActionPerformed
-        IfrQuarto ifrQuarto = new IfrQuarto();
+        IfProduto ifrQuarto = new IfProduto();
         dskPrincipal.add(ifrQuarto);
         ifrQuarto.setVisible(true);
     }//GEN-LAST:event_btnQuartoActionPerformed

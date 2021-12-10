@@ -5,10 +5,10 @@
  */
 package View;
 
-import DAO.PessoaFisicaDAO;
-import DAO.QuartoDAO;
-import TableModel.PessoaFisicaTableModel;
-import TableModel.QuartoTableModel;
+import DAO.FuncionarioDAO;
+import DAO.ProdutoDAO;
+import TableModel.FuncionarioTableModel;
+import TableModel.ProdutoTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
 
@@ -18,8 +18,8 @@ import javax.swing.border.TitledBorder;
  */
 public class DlgSelecionaObjeto extends javax.swing.JDialog {
 
-    QuartoTableModel tableModelQuarto = null;
-    PessoaFisicaTableModel tableModelPessoaFisica = null;
+    ProdutoTableModel tableModelProduto = null;
+    FuncionarioTableModel tableModelFuncionario = null;
     String tableName = "";
     IfrVenda parent = null;
 
@@ -29,24 +29,24 @@ public class DlgSelecionaObjeto extends javax.swing.JDialog {
     }
 
     public DlgSelecionaObjeto(IfrVenda parent, boolean modal, String tableName,
-            QuartoTableModel tableModel) {
+            ProdutoTableModel tableModel) {
         initComponents();
         this.parent = parent;
         this.tableName = tableName;
-        this.tableModelQuarto = tableModel;
-        tblObjeto.setModel(this.tableModelQuarto);
+        this.tableModelProduto = tableModel;
+        tblObjeto.setModel(this.tableModelProduto);
         tblObjeto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         TitledBorder tb = (TitledBorder) pnlData.getBorder();
         tb.setTitle(tb.getTitle() + " " + this.tableName);
     }
 
     public DlgSelecionaObjeto(IfrVenda parent, boolean modal, String tableName,
-            PessoaFisicaTableModel tableModel) {
+            FuncionarioTableModel tableModel) {
         initComponents();
         this.parent = parent;
         this.tableName = tableName;
-        this.tableModelPessoaFisica = tableModel;
-        tblObjeto.setModel(this.tableModelPessoaFisica);
+        this.tableModelFuncionario = tableModel;
+        tblObjeto.setModel(this.tableModelFuncionario);
         tblObjeto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         TitledBorder tb = (TitledBorder) pnlData.getBorder();
         tb.setTitle(tb.getTitle() + " " + this.tableName);
@@ -172,10 +172,10 @@ public class DlgSelecionaObjeto extends javax.swing.JDialog {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //VERIFICA QUAL É A TABELA
-        if (this.tableName.equals("Pessoa Física")) {
-            this.tableModelPessoaFisica.updateData(tfdBuscar.getText());
-        } else if (this.tableName.equals("Quarto")) {
-            this.tableModelQuarto.updateData(tfdBuscar.getText());
+        if (this.tableName.equals("Funcionário")) {
+            this.tableModelFuncionario.updateData(tfdBuscar.getText());
+        } else if (this.tableName.equals("Produto")) {
+            this.tableModelProduto.updateData(tfdBuscar.getText());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -184,10 +184,10 @@ public class DlgSelecionaObjeto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        if (this.tableName.equals("Pessoa Física")) {
-            this.parent.setFields(new PessoaFisicaDAO().findById((int) tblObjeto.getValueAt(tblObjeto.getSelectedRow(), 0)));
-        } else if (this.tableName.equals("Quarto")) {
-            this.parent.setFields(new QuartoDAO().findById((int) tblObjeto.getValueAt(tblObjeto.getSelectedRow(), 0)));
+        if (this.tableName.equals("Funcionário")) {
+            this.parent.setFields(new FuncionarioDAO().findById((int) tblObjeto.getValueAt(tblObjeto.getSelectedRow(), 0)));
+        } else if (this.tableName.equals("Produto")) {
+            this.parent.setFields(new ProdutoDAO().findById((int) tblObjeto.getValueAt(tblObjeto.getSelectedRow(), 0)));
         }
         this.dispose();
     }//GEN-LAST:event_btnSelecionarActionPerformed

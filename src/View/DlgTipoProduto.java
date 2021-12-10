@@ -5,9 +5,9 @@
  */
 package View;
 
-import DAO.TipoQuartoDAO;
-import Entidade.TipoQuarto;
-import TableModel.TipoQuartoTableModel;
+import DAO.TipoProdutoDAO;
+import Entidade.TipoProduto;
+import TableModel.TipoProdutoTableModel;
 import Utils.Formatacao;
 import Utils.JTableUtilities;
 import javax.swing.JOptionPane;
@@ -20,34 +20,33 @@ import javax.swing.SwingConstants;
  */
 public class DlgTipoProduto extends javax.swing.JDialog {
 
-    TipoQuartoTableModel tableModel = new TipoQuartoTableModel();
-    int idtipo_quarto = 0;
-    IfrQuarto parent;
+    TipoProdutoTableModel tableModel = new TipoProdutoTableModel();
+    int idtipo_produto = 0;
+    IfProduto parent;
 
     /**
-     * Creates new form DlgTipoQuarto
+     * Creates new form DlgTipoProduto
      */
     public DlgTipoProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         limpaCampos();
-        tblTipoQuarto.setModel(tableModel);
-        tblTipoQuarto.getColumnModel().getColumn(0).setPreferredWidth(10);
-        tblTipoQuarto.getColumnModel().getColumn(1).setPreferredWidth(350);
-        tblTipoQuarto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JTableUtilities.setCellsAlignment(tblTipoQuarto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
-        Formatacao.formatarMoeda(tfdValor);
+        tblTipoProduto.setModel(tableModel);
+        tblTipoProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblTipoProduto.getColumnModel().getColumn(1).setPreferredWidth(350);
+        tblTipoProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
     }
 
-    public DlgTipoProduto(IfrQuarto parent, boolean modal) {
+    public DlgTipoProduto(IfProduto parent, boolean modal) {
         initComponents();
         limpaCampos();
         this.parent = parent;
-        tblTipoQuarto.setModel(tableModel);
-        tblTipoQuarto.getColumnModel().getColumn(0).setPreferredWidth(10);
-        tblTipoQuarto.getColumnModel().getColumn(1).setPreferredWidth(350);
-        tblTipoQuarto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JTableUtilities.setCellsAlignment(tblTipoQuarto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
+        tblTipoProduto.setModel(tableModel);
+        tblTipoProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblTipoProduto.getColumnModel().getColumn(1).setPreferredWidth(350);
+        tblTipoProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
         Formatacao.formatarMoeda(tfdValor);
 
     }
@@ -57,7 +56,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
         if ((Integer) spnCapacidade.getValue() <= 0 || (Integer) spnBanheiros.getValue() <= 0 || (Integer) spnComodos.getValue() <= 0) {
             valido = false;
             JOptionPane.showMessageDialog(null, "Verifique os campos!", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
-        } else if (txaDescricao.getText().length() == 0) {
+        } else if (txaMarca.getText().length() == 0) {
             valido = false;
             JOptionPane.showMessageDialog(null, "Insira uma descrição.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
         } else if (valido) {
@@ -75,29 +74,26 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlTipoQuarto = new javax.swing.JTabbedPane();
+        pnlTipoProduto = new javax.swing.JTabbedPane();
         pnlCadastrar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txaDescricao = new javax.swing.JTextArea();
         tfdMostraId = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        spnCapacidade = new javax.swing.JSpinner();
-        spnComodos = new javax.swing.JSpinner();
-        spnBanheiros = new javax.swing.JSpinner();
-        tfdValor = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
+        tfdRecipiente = new javax.swing.JFormattedTextField();
+        tfdMarca = new javax.swing.JFormattedTextField();
+        tfdVolume = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         pnlConsultar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         tfdBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblTipoQuarto = new javax.swing.JTable();
+        tblTipoProduto = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
@@ -108,13 +104,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
 
         jLabel2.setText("Código:");
 
-        jLabel3.setText("Descrição:*");
-
-        jLabel4.setText("Valor da Reserva: (R$)*");
-
-        txaDescricao.setColumns(20);
-        txaDescricao.setRows(5);
-        jScrollPane2.setViewportView(txaDescricao);
+        jLabel3.setText("Marca:*");
 
         tfdMostraId.setEditable(false);
 
@@ -126,20 +116,20 @@ public class DlgTipoProduto extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setText("Capacidade: *");
+        jLabel5.setText("Recipiente: *");
 
-        jLabel6.setText("Cômodos: *");
-
-        jLabel7.setText("Banheiros: *");
-
-        spnCapacidade.setModel(new javax.swing.SpinnerNumberModel(1, 1, 30, 1));
-
-        spnComodos.setModel(new javax.swing.SpinnerNumberModel(1, 1, 30, 1));
-
-        spnBanheiros.setModel(new javax.swing.SpinnerNumberModel(1, 1, 30, 1));
+        jLabel6.setText("Volume: *");
 
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("Campos marcados com '*' são de preenchimento obrigatório.");
+
+        tfdVolume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfdVolumeActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("(ml)");
 
         javax.swing.GroupLayout pnlCadastrarLayout = new javax.swing.GroupLayout(pnlCadastrar);
         pnlCadastrar.setLayout(pnlCadastrarLayout);
@@ -150,27 +140,27 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastrarLayout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCadastrarLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfdValor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlCadastrarLayout.createSequentialGroup()
                         .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(63, 63, 63)
-                        .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spnCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spnComodos, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spnBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))))
+                            .addComponent(jLabel4)
+                            .addGroup(pnlCadastrarLayout.createSequentialGroup()
+                                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3))
+                                .addGap(63, 63, 63)
+                                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfdRecipiente, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlCadastrarLayout.createSequentialGroup()
+                                        .addComponent(tfdVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlCadastrarLayout.setVerticalGroup(
@@ -180,28 +170,22 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfdMostraId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCadastrarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(spnCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(spnComodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(spnBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(27, 27, 27)
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfdValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfdRecipiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(35, 35, 35)
+                .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfdVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(144, 144, 144)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastrarLayout.createSequentialGroup()
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +195,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                         .addGap(24, 24, 24))))
         );
 
-        pnlTipoQuarto.addTab("Cadastrar", pnlCadastrar);
+        pnlTipoProduto.addTab("Cadastrar", pnlCadastrar);
 
         jLabel1.setText("Buscar:");
 
@@ -223,7 +207,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
             }
         });
 
-        tblTipoQuarto.setModel(new javax.swing.table.DefaultTableModel(
+        tblTipoProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -234,7 +218,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblTipoQuarto);
+        jScrollPane1.setViewportView(tblTipoProduto);
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/delete-30.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -267,15 +251,14 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultarLayout.createSequentialGroup()
-                        .addGroup(pnlConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(pnlConsultarLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
+                    .addGroup(pnlConsultarLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlConsultarLayout.setVerticalGroup(
             pnlConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +278,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlTipoQuarto.addTab("Consultar", pnlConsultar);
+        pnlTipoProduto.addTab("Consultar", pnlConsultar);
 
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -316,19 +299,21 @@ public class DlgTipoProduto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTipoQuarto)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlTipoQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(pnlTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -342,10 +327,10 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (validaCampos()) {
 
-            TipoQuartoDAO dao = new TipoQuartoDAO();
-            TipoQuarto t = new TipoQuarto();
-            t.setId_tipo_quarto(idtipo_quarto);
-            t.setDs_tipo_quarto(txaDescricao.getText());
+            TipoProdutoDAO dao = new TipoProdutoDAO();
+            TipoProduto t = new TipoProduto();
+            t.setId_tipo_produto(idtipo_produto);
+            t.setDs_tipo_produto(txaMarca.getText());
             t.setNr_capacidade(Integer.parseInt(spnCapacidade.getValue() + ""));
             t.setNr_comodo(Integer.parseInt(spnComodos.getValue() + ""));
             t.setNr_banheiro(Integer.parseInt(spnBanheiros.getValue() + ""));
@@ -356,7 +341,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
 
             t.setId_usuario_cadastro(1); // ID = 1 (admin)
             t.setIe_situacao('A'); //A = Ativa
-            if (idtipo_quarto == 0) {
+            if (idtipo_produto == 0) {
                 Integer returnOfSavedID = dao.save(t);
                 if (returnOfSavedID != null) {
                     JOptionPane.showMessageDialog(null, "Tipo de quarto cadastrado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
@@ -368,7 +353,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
                 String retorno = dao.update(t);
                 if (retorno == null) {
                     JOptionPane.showMessageDialog(null, "Tipo de quarto atualizado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
-                    this.idtipo_quarto = 0;
+                    this.idtipo_produto = 0;
                     limpaCampos();
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo de quarto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -383,10 +368,10 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (tblTipoQuarto.getSelectedRow() != -1) {
+        if (tblTipoProduto.getSelectedRow() != -1) {
             //remonta o produto
-            TipoQuartoDAO dao = new TipoQuartoDAO();
-            TipoQuarto t = dao.findById((int) tableModel.getValueAt(tblTipoQuarto.getSelectedRow(), 0));
+            TipoProdutoDAO dao = new TipoProdutoDAO();
+            TipoProduto t = dao.findById((int) tableModel.getValueAt(tblTipoProduto.getSelectedRow(), 0));
             t.setIe_situacao('I'); //INATIVANDO
 
             String retorno = dao.update(t);
@@ -402,20 +387,20 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tblTipoQuarto.getSelectedRow() != -1) {
-            this.idtipo_quarto = (int) tableModel.getValueAt(tblTipoQuarto.getSelectedRow(), 0);
+        if (tblTipoProduto.getSelectedRow() != -1) {
+            this.idtipo_produto = (int) tableModel.getValueAt(tblTipoProduto.getSelectedRow(), 0);
 
-            TipoQuarto tqBusca = new TipoQuartoDAO().findById(this.idtipo_quarto);
+            TipoProduto tqBusca = new TipoProdutoDAO().findById(this.idtipo_produto);
 
-            tfdMostraId.setText(String.valueOf(idtipo_quarto));
-            txaDescricao.setText(String.valueOf(tqBusca.getDs_tipo_quarto()));
+            tfdMostraId.setText(String.valueOf(idtipo_produto));
+            tfdMarca.setText(String.valueOf(tqBusca.getDs_tipo_produto()));
             spnCapacidade.setValue(tqBusca.getNr_capacidade());
             spnComodos.setValue(tqBusca.getNr_comodo());
             spnBanheiros.setValue(tqBusca.getNr_banheiro());
-            tfdValor.setText(String.valueOf(tableModel.getValueAt(tblTipoQuarto.getSelectedRow(), 5)));
+            tfdValor.setText(String.valueOf(tableModel.getValueAt(tblTipoProduto.getSelectedRow(), 5)));
 
             //retorna à aba de cadastro
-            pnlTipoQuarto.setSelectedIndex(0);
+            pnlTipoProduto.setSelectedIndex(0);
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um tipo de quarto para Editar.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
         }
@@ -427,12 +412,16 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        if (pnlTipoQuarto.getSelectedIndex() == 0) {
+        if (pnlTipoProduto.getSelectedIndex() == 0) {
             limpaCampos();
         } else {
-            pnlTipoQuarto.setSelectedIndex(0);
+            pnlTipoProduto.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void tfdVolumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdVolumeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfdVolumeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -493,27 +482,24 @@ public class DlgTipoProduto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlCadastrar;
     private javax.swing.JPanel pnlConsultar;
-    private javax.swing.JTabbedPane pnlTipoQuarto;
-    private javax.swing.JSpinner spnBanheiros;
-    private javax.swing.JSpinner spnCapacidade;
-    private javax.swing.JSpinner spnComodos;
-    private javax.swing.JTable tblTipoQuarto;
+    private javax.swing.JTabbedPane pnlTipoProduto;
+    private javax.swing.JTable tblTipoProduto;
     private javax.swing.JTextField tfdBuscar;
+    private javax.swing.JFormattedTextField tfdMarca;
     private javax.swing.JTextField tfdMostraId;
-    private javax.swing.JFormattedTextField tfdValor;
-    private javax.swing.JTextArea txaDescricao;
+    private javax.swing.JFormattedTextField tfdRecipiente;
+    private javax.swing.JTextField tfdVolume;
     // End of variables declaration//GEN-END:variables
 
     private void limpaCampos() {
         tfdMostraId.setText("");
-        txaDescricao.setText("");
+        txaMarca.setText("");
         tfdValor.setText("00");
         spnCapacidade.setValue(1);
         spnComodos.setValue(1);
         spnBanheiros.setValue(1);
-        txaDescricao.requestFocus();
+        txaMarca.requestFocus();
     }
 }

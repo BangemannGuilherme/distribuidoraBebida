@@ -55,7 +55,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
         tfdRazaoSocial = new javax.swing.JTextField();
-        lbCpf = new javax.swing.JLabel();
+        lbCnpj = new javax.swing.JLabel();
         tfdCnpj = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         lbEndereco = new javax.swing.JLabel();
@@ -83,7 +83,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
         btnFechar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setTitle("Funcionário");
+        setTitle("Cliente");
         setPreferredSize(new java.awt.Dimension(992, 737));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/save-30.png"))); // NOI18N
@@ -99,7 +99,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
 
         lbNome.setText("Razão Social");
 
-        lbCpf.setText("CNPJ");
+        lbCnpj.setText("CNPJ");
 
         lbEndereco.setText("Endereço");
 
@@ -174,7 +174,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
                         .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbNome)
                             .addComponent(lbCodigo)
-                            .addComponent(lbCpf))
+                            .addComponent(lbCnpj))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfdCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +196,7 @@ public class IfrCliente extends javax.swing.JInternalFrame {
                     .addComponent(tfdRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCpf)
+                    .addComponent(lbCnpj)
                     .addComponent(tfdCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(81, 81, 81)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -497,8 +497,8 @@ public class IfrCliente extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbBairro;
     private javax.swing.JLabel lbCelular;
+    private javax.swing.JLabel lbCnpj;
     private javax.swing.JLabel lbCodigo;
-    private javax.swing.JLabel lbCpf;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbEndereco;
     private javax.swing.JLabel lbNome;

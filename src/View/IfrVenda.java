@@ -99,7 +99,7 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         btnFechar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setTitle("Reservas");
+        setTitle("Vendas");
         setPreferredSize(new java.awt.Dimension(992, 737));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/save-30.png"))); // NOI18N

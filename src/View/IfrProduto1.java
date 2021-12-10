@@ -19,12 +19,12 @@ import javax.swing.SwingConstants;
  *
  * @author Gui
  */
-public class IfrProduto extends javax.swing.JInternalFrame {
+public class IfrProduto1 extends javax.swing.JInternalFrame {
 
     ProdutoTableModel tableModel = new ProdutoTableModel();
     int idproduto = 0;
 
-    public IfrProduto() {
+    public IfrProduto1() {
         initComponents();
         tblProduto.setModel(tableModel);
         tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
@@ -266,11 +266,11 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             ProdutoDAO dao = new ProdutoDAO();
             Produto p = new Produto();
             p.setId_produto(idproduto);
-            p.setDs_produto(txaDescricao.getText());
+            p.setDescricao(txaDescricao.getText());
             String semPontosAdicionais = tfdValor.getText().replace(".", "");
-            p.setVl_venda(Double.parseDouble(semPontosAdicionais.replace(',', '.')));//removendo pontos extras antes de inserir
+            p.setValor(Double.parseDouble(semPontosAdicionais.replace(',', '.')));//removendo pontos extras antes de inserir
             p.setId_usuario_cadastro(1); // ID = 1 (admin)
-            p.setIe_situacao('A'); //A = Ativa
+            p.setSituacao('A'); //A = Ativa
             if (idproduto == 0) {
                 Integer returnOfSavedID = dao.save(p);//ID recem adicionado pronto para ser usado em outro local
                 if (returnOfSavedID != null) {
@@ -302,7 +302,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             //remonta o produto, possuindo o ID, basta buscar os dados no banco:
             ProdutoDAO dao = new ProdutoDAO();
             Produto p = dao.findById((int) tableModel.getValueAt(tblProduto.getSelectedRow(), 0));
-            p.setIe_situacao('I'); //INATIVANDO
+            p.setSituacao('I'); //INATIVANDO
             String retorno = dao.update(p);
             if (retorno == null) {
                 JOptionPane.showMessageDialog(null, "Produto excluído com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);

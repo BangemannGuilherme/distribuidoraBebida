@@ -29,7 +29,7 @@ public class Produto {
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "valor")
-    private String valor;
+    private Double valor;
     @Column(name = "id_usuario_cadastro")
     private Integer id_usuario_cadastro;
     @Column(name = "situacao")
@@ -54,11 +54,11 @@ public class Produto {
         this.descricao = descricao;
     }
     
-    public String getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
     

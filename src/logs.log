@@ -56,3 +56,90 @@ ERROR 2021-12-10 01:07:41 - ERROR: current transaction is aborted, commands igno
  WARN 2021-12-10 02:10:29 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
  WARN 2021-12-10 02:30:47 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
  WARN 2021-12-10 02:30:47 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:35:22 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 19:35:22 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:38:08 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 19:38:08 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:39:34 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 19:39:34 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:40:48 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 19:40:48 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:42:17 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 19:42:17 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 19:45:36 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-10 19:45:36 - ERROR: relation "funcionario" does not exist
+  Posição: 300
+ WARN 2021-12-10 19:45:42 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 19:45:42 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 19:45:51 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 19:45:51 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 19:46:04 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 19:46:04 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 19:46:05 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 19:46:05 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 19:46:05 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 19:46:05 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:00:43 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-10 20:00:43 - ERROR: relation "entidade" does not exist
+  Posição: 52
+ WARN 2021-12-10 20:00:49 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:00:49 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:09 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:09 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:17 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:17 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:18 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:18 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:18 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:18 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:20 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:20 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:20 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:20 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:20 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:20 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:20 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:20 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:21 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:21 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:21 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:21 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:23 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:23 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:23 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:23 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:23 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:23 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:23 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:23 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:23 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:23 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:24 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:24 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:01:33 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:01:33 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:02:20 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:02:20 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:02:22 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:02:22 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:02:26 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:02:26 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-10 20:02:38 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 20:02:38 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 20:19:18 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-10 20:19:18 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-10 20:19:45 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-10 20:19:45 - ERROR: relation "audit_log" does not exist
+  Posição: 297
+ WARN 2021-12-10 20:19:47 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-10 20:19:47 - ERROR: current transaction is aborted, commands ignored until end of transaction block

@@ -51,17 +51,17 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(tfdUsuario);
         tfdUsuario.setBounds(200, 180, 120, 20);
 
-        lblUsuario.setFont(new java.awt.Font("Lucida Console", 1, 18)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Lucida Console", 1, 16)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("Usuário:");
         jPanel1.add(lblUsuario);
-        lblUsuario.setBounds(90, 180, 120, 19);
+        lblUsuario.setBounds(90, 180, 120, 17);
 
-        lblSenha.setFont(new java.awt.Font("Lucida Console", 1, 18)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Lucida Console", 1, 16)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
         jPanel1.add(lblSenha);
-        lblSenha.setBounds(110, 210, 80, 19);
+        lblSenha.setBounds(110, 210, 80, 17);
 
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {

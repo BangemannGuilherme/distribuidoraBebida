@@ -82,10 +82,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EasyRoom");
 
-        pnlUsuario.setBackground(new java.awt.Color(32, 41, 95));
+        pnlUsuario.setBackground(new java.awt.Color(48, 44, 44));
         pnlUsuario.setPreferredSize(new java.awt.Dimension(198, 324));
 
-        btnLogout.setBackground(new java.awt.Color(238, 107, 38));
+        btnLogout.setBackground(new java.awt.Color(229, 215, 208));
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/logout.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -94,11 +94,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnReport.setBackground(new java.awt.Color(238, 107, 38));
+        btnReport.setBackground(new java.awt.Color(229, 215, 208));
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/reports.png"))); // NOI18N
         btnReport.setText("Relatórios");
 
-        btnHome.setBackground(new java.awt.Color(238, 107, 38));
+        btnHome.setBackground(new java.awt.Color(229, 215, 208));
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/home.png"))); // NOI18N
         btnHome.setText("Home        ");
         btnHome.setDisabledIcon(null);
@@ -157,14 +157,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
-        pnlLogo.setBackground(new java.awt.Color(32, 41, 95));
+        pnlLogo.setBackground(new java.awt.Color(48, 44, 44));
         pnlLogo.setPreferredSize(new java.awt.Dimension(163, 72));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/logo_easyroom_50x34.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("EasyRoom");
+        jLabel5.setText("EssentialDrinks");
 
         javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
         pnlLogo.setLayout(pnlLogoLayout);
@@ -189,7 +189,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         dskPrincipal.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnPessoaFisica.setBackground(new java.awt.Color(238, 107, 38));
+        btnPessoaFisica.setBackground(new java.awt.Color(229, 215, 208));
         btnPessoaFisica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cadastro.png"))); // NOI18N
         btnPessoaFisica.setText("Cadastro de Pessoa Física");
         btnPessoaFisica.setToolTipText("");
@@ -202,7 +202,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnReserva.setBackground(new java.awt.Color(238, 107, 38));
+        btnReserva.setBackground(new java.awt.Color(229, 215, 208));
         btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/reserva.png"))); // NOI18N
         btnReserva.setText("Reservas");
         btnReserva.setToolTipText("");
@@ -215,7 +215,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnProduto.setBackground(new java.awt.Color(238, 107, 38));
+        btnProduto.setBackground(new java.awt.Color(229, 215, 208));
         btnProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/product.png"))); // NOI18N
         btnProduto.setText("Cadastro de Produtos");
         btnProduto.setToolTipText("");
@@ -228,7 +228,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCidade.setBackground(new java.awt.Color(238, 107, 38));
+        btnCidade.setBackground(new java.awt.Color(229, 215, 208));
         btnCidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cidade.png"))); // NOI18N
         btnCidade.setText("Cadastro de Cidades");
         btnCidade.setToolTipText("");
@@ -244,7 +244,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnUsuario2.setBackground(new java.awt.Color(238, 107, 38));
+        btnUsuario2.setBackground(new java.awt.Color(229, 215, 208));
         btnUsuario2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/usuario.png"))); // NOI18N
         btnUsuario2.setText("Cadastro de Usuários");
         btnUsuario2.setToolTipText("");
@@ -257,7 +257,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnQuarto.setBackground(new java.awt.Color(238, 107, 38));
+        btnQuarto.setBackground(new java.awt.Color(229, 215, 208));
         btnQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/bed-45.png"))); // NOI18N
         btnQuarto.setText("Cadastro de Quartos");
         btnQuarto.setToolTipText("");
@@ -270,10 +270,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        pnlAdmin.setBackground(new java.awt.Color(238, 107, 38));
+        pnlAdmin.setBackground(new java.awt.Color(48, 44, 44));
         pnlAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções de Administrador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        btnLog.setBackground(new java.awt.Color(238, 107, 38));
+        btnLog.setBackground(new java.awt.Color(229, 215, 208));
         btnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/log-45.png"))); // NOI18N
         btnLog.setText("Logs do Sistema");
         btnLog.setToolTipText("");
@@ -286,7 +286,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnInformacoes.setBackground(new java.awt.Color(238, 107, 38));
+        btnInformacoes.setBackground(new java.awt.Color(229, 215, 208));
         btnInformacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/combo-chart-45.png"))); // NOI18N
         btnInformacoes.setText("Informações do Sistema");
         btnInformacoes.setToolTipText("");
@@ -299,7 +299,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAuditoria.setBackground(new java.awt.Color(238, 107, 38));
+        btnAuditoria.setBackground(new java.awt.Color(229, 215, 208));
         btnAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/auditoria-45.png"))); // NOI18N
         btnAuditoria.setText("Auditoria do Sistema");
         btnAuditoria.setToolTipText("");
@@ -336,7 +336,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        btnEmail.setBackground(new java.awt.Color(238, 107, 38));
+        btnEmail.setBackground(new java.awt.Color(229, 215, 208));
         btnEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/mail-icon-45.png"))); // NOI18N
         btnEmail.setText("Enviar E-mail");
         btnEmail.setToolTipText("");

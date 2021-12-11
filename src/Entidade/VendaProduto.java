@@ -24,16 +24,16 @@ public class VendaProduto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venda_produto")
     private Integer id_venda_produto;
+    @Column(name = "quantidade")
+    private Integer quantidade;
+    @Column(name = "vl_venda")
+    private Double vl_venda;
     @JoinColumn(name = "id_venda", referencedColumnName = "id_venda")
     @ManyToOne(optional = false)
     private Venda id_venda;
     @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
     @ManyToOne(optional = false)
     private Produto id_produto;
-    @Column(name = "quantidade")
-    private Integer quantidade;
-    @Column(name = "vl_venda")
-    private Double vl_venda;
 
     public Integer getId_venda_produto() {
         return id_venda_produto;

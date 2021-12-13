@@ -318,3 +318,111 @@ ERROR 2021-12-12 19:53:08 - ERROR: relation "audit_log" does not exist
  WARN 2021-12-12 22:20:29 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
  WARN 2021-12-12 22:27:30 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
  WARN 2021-12-12 22:27:31 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-12 23:22:02 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-12 23:22:02 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:00:25 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:00:25 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:01:42 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:01:42 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:10:49 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:10:49 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:16:31 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:16:31 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:17:18 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:17:18 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:36:42 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:36:43 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:36:57 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-13 00:36:57 - ERROR: duplicate key value violates unique constraint "pk_cidade"
+  Detalhe: Key (id_cidade)=(1) already exists.
+ERROR 2021-12-13 00:36:58 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:06 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:06 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:06 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:07 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:07 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:07 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:08 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:08 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:08 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:09 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:09 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:09 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:21 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:21 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:21 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:37:26 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:37:26 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:37:26 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 00:42:48 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:42:48 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:45:14 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-13 00:45:14 - ERROR: relation "audit_log" does not exist
+  Posição: 297
+ WARN 2021-12-13 00:45:16 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:45:16 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:45:37 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:45:37 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:45:53 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:45:53 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:45:56 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:45:56 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:00 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:00 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:01 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:01 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:02 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:02 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:07 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:07 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:28 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:28 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:29 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 00:46:29 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 00:46:42 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:46:42 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:51:07 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 00:51:07 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 00:52:20 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 00:52:20 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(999) is not present in table "estado".
+ERROR 2021-12-13 00:52:20 - Erro na atualização: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 01:07:55 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:07:55 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:08:29 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:08:29 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:15:46 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:15:46 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:22:13 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:22:13 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:23:10 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-13 01:23:10 - ERROR: duplicate key value violates unique constraint "pk_entidade"
+  Detalhe: Key (id_entidade)=(4) already exists.
+ERROR 2021-12-13 01:23:10 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 01:23:10 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-13 01:23:10 - ERROR: insert or update on table "funcionario" violates foreign key constraint "fk_funcionario_entidade"
+  Detalhe: Key (id_entidade)=(0) is not present in table "entidade".
+ERROR 2021-12-13 01:23:10 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-13 01:29:36 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:29:37 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:32:37 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:32:37 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:36:25 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:36:25 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-13 01:37:02 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-13 01:37:02 - ERROR: column "userid" does not exist
+  Posição: 334
+ WARN 2021-12-13 01:37:04 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 01:37:04 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 01:37:08 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 01:37:08 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 01:37:10 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-13 01:37:10 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-13 01:58:27 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-13 01:58:27 - HHH000402: Using Hibernate built-in connection pool (not for production use!)

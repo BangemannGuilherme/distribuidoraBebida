@@ -81,7 +81,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnFornecedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("EasyRoom");
+        setTitle("EssentialDrinks");
 
         pnlUsuario.setBackground(new java.awt.Color(48, 44, 44));
         pnlUsuario.setPreferredSize(new java.awt.Dimension(198, 324));

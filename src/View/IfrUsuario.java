@@ -89,7 +89,7 @@ public class IfrUsuario extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Senha: *");
 
-        jLabel4.setText("Pessoa Física: *");
+        jLabel4.setText("Funcionário: *");
 
         jLabel7.setText("Permissão: *");
 

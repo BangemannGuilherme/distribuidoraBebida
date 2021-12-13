@@ -5,11 +5,16 @@
  */
 package View;
 
-import apoio.Formatacao;
-import dao.VendaDAO;
-import entidade.Venda;
+import Utils.Formatacao;
+import DAO.VendaDAO;
+import Entidade.Venda;
+import TableModel.VendaTableModel;
+import Utils.JTableUtilities;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -18,6 +23,8 @@ import javax.swing.JOptionPane;
 public class DlgBuscaVenda extends javax.swing.JDialog {
 
     IfrVenda ifrVendaLocal = null;
+    JDesktopPane dskPrincipal = new JDesktopPane();
+    VendaTableModel tableModel = new VendaTableModel();
     /**
      * Creates new form DlgPesquisarVenda
      */
@@ -27,10 +34,20 @@ public class DlgBuscaVenda extends javax.swing.JDialog {
         Formatacao.formatarData(tffDataInicio);
         Formatacao.formatarData(tffDataFinal);
         ifrVendaLocal = ifrVenda;
+        tblBuscaVenda.setModel(tableModel);
+        tblBuscaVenda.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblBuscaVenda.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblBuscaVenda, SwingConstants.CENTER, new int[]{0, 1});
+        tblBuscaVenda.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
 
     private DlgBuscaVenda(JFrame jFrame, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tblBuscaVenda.setModel(tableModel);
+        tblBuscaVenda.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblBuscaVenda.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblBuscaVenda, SwingConstants.CENTER, new int[]{0, 1});
+        tblBuscaVenda.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
 
     /**
@@ -195,10 +212,9 @@ public class DlgBuscaVenda extends javax.swing.JDialog {
             String datavenda = String.valueOf(tblBuscaVenda.getValueAt(tblBuscaVenda.getSelectedRow(), 3));
             String pessoanome = String.valueOf(tblBuscaVenda.getValueAt(tblBuscaVenda.getSelectedRow(), 4));
             String pessoacod = String.valueOf(tblBuscaVenda.getValueAt(tblBuscaVenda.getSelectedRow(), 5));
-            String sitvenda = String.valueOf(tblBuscaVenda.getValueAt(tblBuscaVenda.getSelectedRow(), 6));
             
 
-            ifrVendaLocal.definirVenda(cod, nome, clientecod, datavenda, pessoanome, pessoacod, sitvenda);
+            ifrVendaLocal.definirVenda(cod, nome, clientecod, datavenda, pessoanome, pessoacod);
             
 
             this.dispose();
@@ -216,12 +232,7 @@ public class DlgBuscaVenda extends javax.swing.JDialog {
 
             int cod = Integer.parseInt(codString);
             
-            Venda venda = new VendaDAO().consultarId(Integer.parseInt(codString));
-             if(venda.getStatus()== 'a') {
-                venda.setStatus('i');
-            }else{
-                venda.setStatus('a');
-            }
+            Venda venda = new VendaDAO().findById(Integer.parseInt(codString));
 
             String retorno = new VendaDAO().salvar(venda);
             

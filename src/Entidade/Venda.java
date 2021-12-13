@@ -23,7 +23,7 @@ public class Venda {
     @Column(name = "id_venda")
     private Integer id_venda;
     @Column(name = "dt_venda")
-    private Date dt_venda;
+    private String dt_venda;
     @Column(name = "id_usuario_cadastro")
     private Integer id_usuario_cadastro;
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
@@ -65,11 +65,11 @@ public class Venda {
         this.id_funcionario = id_funcionario;
     }
 
-    public Date getDt_venda() {
+    public String getDt_venda() {
         return dt_venda;
     }
 
-    public void seDt_venda(Date dt_venda) {
+    public void setDt_venda(String dt_venda) {
         this.dt_venda = dt_venda;
     }
 

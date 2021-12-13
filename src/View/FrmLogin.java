@@ -46,6 +46,7 @@ public class FrmLogin extends javax.swing.JFrame {
         lblFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("EssentialDrinks");
 
         jPanel1.setLayout(null);
         jPanel1.add(tfdUsuario);

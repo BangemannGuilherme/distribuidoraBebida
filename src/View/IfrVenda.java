@@ -18,8 +18,10 @@ import TableModel.ProdutoTableModel;
 import TableModel.VendaTableModel;
 import Utils.Calendario;
 import Utils.DateUtils;
+import Utils.Formatacao;
 import Utils.JTableUtilities;
 import Utils.Sessao;
+import Utils.Validacao;
 import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JDesktopPane;
@@ -39,12 +41,16 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     int idFuncionario = 0;
     int idVenda = 0;
     int idRQ = 0;
-    
+    int cod_venda = 0;
+    float valortotal = 0;
+    int cod_it = 0;
+
     /**
      * Creates new form IfrVenda
      */
     public IfrVenda() {
         initComponents();
+        Formatacao.formatarData(tffDataVenda);
         tffDataVenda.setText(new Calendario().obterDataAtualDMA());
     }
 
@@ -65,10 +71,10 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         lblDataVenda = new javax.swing.JLabel();
         tffDataVenda = new javax.swing.JFormattedTextField();
         lblPessoa = new javax.swing.JLabel();
-        tfdPessoa = new javax.swing.JTextField();
+        tfdFuncionario = new javax.swing.JTextField();
         lblCodPessoa = new javax.swing.JLabel();
-        tfdCodpessoa = new javax.swing.JTextField();
-        btnPesquisarPessoa = new javax.swing.JButton();
+        tfdCodfuncionario = new javax.swing.JTextField();
+        btnPesquisarFuncionario = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBuscarProduto = new javax.swing.JTable();
         btnGerar = new javax.swing.JButton();
@@ -117,17 +123,17 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         lblPessoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPessoa.setText("Funcionário*");
 
-        tfdPessoa.setEditable(false);
+        tfdFuncionario.setEditable(false);
 
         lblCodPessoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblCodPessoa.setText("Código*");
 
-        tfdCodpessoa.setEditable(false);
+        tfdCodfuncionario.setEditable(false);
 
-        btnPesquisarPessoa.setText("Pesquisar");
-        btnPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisarFuncionario.setText("Pesquisar");
+        btnPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarPessoaActionPerformed(evt);
+                btnPesquisarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -276,15 +282,15 @@ public class IfrVenda extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblPessoa)
                                         .addGap(18, 18, 18)
-                                        .addComponent(tfdPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblCodPessoa)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfdCodpessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfdCodfuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnPesquisarVenda))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnPesquisarPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPesquisarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnGerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,10 +340,10 @@ public class IfrVenda extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPessoa)
-                    .addComponent(tfdPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodPessoa)
-                    .addComponent(tfdCodpessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarPessoa))
+                    .addComponent(tfdCodfuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarFuncionario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPesquisarVenda)
@@ -389,9 +395,9 @@ public class IfrVenda extends javax.swing.JInternalFrame {
 
     private void btnSalvarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarItensActionPerformed
         if (tblBuscarProduto.getRowCount() > 0){
-            DlgSalvarFinanceiro dlgSalvarFinanceiro = new DlgSalvarFinanceiro(null, true, this);
-            dlgSalvarFinanceiro.setVisible(true);
-            dlgSalvarFinanceiro.definirValorTotal(tfdValorTotal.getText(), new VendaDAO().ultimoIDInserido());
+            //DlgSalvarFinanceiro dlgSalvarFinanceiro = new DlgSalvarFinanceiro(null, true, this);
+            //dlgSalvarFinanceiro.setVisible(true);
+            //dlgSalvarFinanceiro.definirValorTotal(tfdValorTotal.getText(), new VendaDAO().ultimoIDInserido());
         } else {
             JOptionPane.showMessageDialog(null, "Crie ou selecione uma venda para continuar!");
         }
@@ -402,23 +408,23 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         tfdCliente.setText("");
         tfdCodcliente.setText("");
         tffDataVenda.setText("");
-        tfdCodpessoa.setText("");
-        tfdPessoa.setText("");
+        tfdCodfuncionario.setText("");
+        tfdFuncionario.setText("");
         valortotal = 0;
         tfdValorTotal.setText("");
         tfdValorProduto.setText("");
         tfdCodigoProduto.setText("");
         tfdQuantidade.setText("");
         tfdDescricao.setText("");
-        venda.setCod(0);
-        new VendaProdutoDAO().popularTabela(tblBuscarProduto, null);
+        //venda.setCod(0);
+        //new VendaProdutoDAO().popularTabela(tblBuscarProduto, null);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int cod = Integer.parseInt(String.valueOf(tblBuscarProduto.getValueAt(tblBuscarProduto.getSelectedRow(), 0)));
         VendaProdutoDAO leDAO = new VendaProdutoDAO();
-        leDAO.excluir(cod);
-        new VendaProdutoDAO().popularTabela(tblBuscarProduto, Integer.toString(cod_venda));
+        //leDAO.excluir(cod);
+        //new VendaProdutoDAO().popularTabela(tblBuscarProduto, Integer.toString(cod_venda));
         float valor;
         valortotal = 0;
         for (int i = 0; i < tblBuscarProduto.getRowCount(); i++) {
@@ -428,53 +434,55 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         tfdValorTotal.setText("" + valortotal);    
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
+    private void btnPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarFuncionarioActionPerformed
         DlgBuscaFuncionario dlgPesquisarFuncionario = new DlgBuscaFuncionario(null, true, this);
         dlgPesquisarFuncionario.setVisible(true);
-    }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
+    }//GEN-LAST:event_btnPesquisarFuncionarioActionPerformed
 
     public void apagarDados() {
         Venda venda = new Venda();
         tfdCliente.setText("");
         tfdCodcliente.setText("");
         tffDataVenda.setText("");
-        tfdCodpessoa.setText("");
-        tfdPessoa.setText("");
+        tfdCodfuncionario.setText("");
+        tfdFuncionario.setText("");
         valortotal = 0;
         tfdValorProduto.setText("");
         tfdCodigoProduto.setText("");
         tfdQuantidade.setText("");
         tfdDescricao.setText("");
-        venda.setCod(0);
+        venda.setId_venda(0);
 
     }
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         // Populando o objeto 
         try {
         Venda venda = new Venda();   
-        venda.setCod(cod_venda);
-        venda.setData_venda(tffDataVenda.getText());
-        venda.setStatus('a');
-        venda.setPessoa_cod(tfdCodpessoa.getText());
-        venda.setCliente_cod(tfdCodcliente.getText());
+        venda.setId_venda(cod_venda);
+        venda.setDt_venda(tffDataVenda.getText());
+        //venda.setId_funcionario(Integer.parseInt(tfdCodfuncionario.getText()));
+        //venda.setId_cliente(Integer.parseInt(tfdCodcliente.getText()));
+        //venda.setId_funcionario(tfdCodfuncionario.getText());
+        //venda.setId_cliente(tfdCodcliente.getText());
         
         // Criando a instancia do ItemDAO
         VendaDAO vendaDAO = new VendaDAO();
 
         // Salvando registro
 
-        if (tfdCliente.getText().equals("") || tfdCodcliente.getText().equals("") || tffDataVenda.getText().equals("") || tfdPessoa.getText().equals("") || tfdCodpessoa.equals("") || Validacao.validarDataFormatada(tffDataVenda.getText()) == false) {
+        if (tfdCliente.getText().equals("") || tfdCodcliente.getText().equals("") || tffDataVenda.getText().equals("") || tfdFuncionario.getText().equals("") || tfdCodfuncionario.equals("") || Validacao.validarDataFormatada(tffDataVenda.getText()) == false) {
             JOptionPane.showMessageDialog(null, "Data invalida ou os campos obrigatorios não foram preenchidos!");
             btnPesquisarCliente.requestFocus();
             tfdCliente.setText("");
             tfdCodcliente.setText("");
             tffDataVenda.setText("");
-            tfdPessoa.setText("");
-            tfdCodpessoa.setText("");
+            tfdFuncionario.setText("");
+            tfdCodfuncionario.setText("");
             btnPesquisarCliente.requestFocus();
             
         } else {
-                cod_venda = Integer.parseInt(vendaDAO.salvar(venda));
+                String retorno = vendaDAO.salvar(venda);
+                //retorno = vendaDAO.salvar(venda);
                 System.out.println("ID venda" + cod_venda);
                 JOptionPane.showMessageDialog(null, "Venda/Atualizada com sucesso!");
                 // posiciona cursor
@@ -489,8 +497,8 @@ public class IfrVenda extends javax.swing.JInternalFrame {
             tfdCliente.setText("");
             tfdCodcliente.setText("");
             tffDataVenda.setText("");
-            tfdPessoa.setText("");
-            tfdCodpessoa.setText("");
+            tfdFuncionario.setText("");
+            tfdCodfuncionario.setText("");
             btnPesquisarCliente.requestFocus();
             
 
@@ -508,18 +516,18 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPesquisarProdutoActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-        if (!tfdCliente.getText().isEmpty() && !tfdCodcliente.getText().isEmpty() && !tffDataVenda.getText().isEmpty() && !tfdPessoa.getText().isEmpty() && !tfdCodpessoa.getText().isEmpty()) {
+        if (!tfdCliente.getText().isEmpty() && !tfdCodcliente.getText().isEmpty() && !tffDataVenda.getText().isEmpty() && !tfdFuncionario.getText().isEmpty() && !tfdCodfuncionario.getText().isEmpty()) {
         int idz;
         VendaProdutoDAO vi = new VendaProdutoDAO();
         VendaProduto vendaitens = new VendaProduto();
         Venda venda = new Venda();
         if ("".equals(tfdQuantidade.getText()) || "".equals(tfdCodigoProduto.getText()) || "".equals(tfdDescricao.getText())) {
             JOptionPane.showMessageDialog(null, "Preencha os campos Obrigatórios!");
-        } else if (Validacao.validaNumero(tfdQuantidade.getText())) {
+        //} else if (Validacao.validaNumero(tfdQuantidade.getText())) {
 
             //DecimalFormat f = new DecimalFormat("#.00");
 
-            int codven = venda.getCod();
+            //int codven = venda.getCod();
             String cod = tfdCodigoProduto.getText().trim();
             String descricao = tfdDescricao.getText().trim();
             String quantidade = tfdQuantidade.getText();
@@ -533,19 +541,19 @@ public class IfrVenda extends javax.swing.JInternalFrame {
 
             System.out.println("ID venda:" + cod_venda);
             System.out.println("ID item = " + cod_it);
-            vendaitens.setCod(cod_it);
-            vendaitens.setProduto_cod(Integer.parseInt(tfdCodigoProduto.getText()));
+            //vendaitens.setCod(cod_it);
+            //vendaitens.setProduto_cod(Integer.parseInt(tfdCodigoProduto.getText()));
             vendaitens.setQuantidade(Integer.parseInt(tfdQuantidade.getText()));
-            vendaitens.setId_venda(cod_venda);
-            vendaitens.setValor_venda(Float.parseFloat(tfdValorTotal.getText()));
+            //vendaitens.setId_venda(cod_venda);
+            //vendaitens.setValor_venda(Float.parseFloat(tfdValorTotal.getText()));
 
-            JOptionPane.showMessageDialog(null, vi.salvar(vendaitens));
+            //JOptionPane.showMessageDialog(null, vi.salvar(vendaitens));
 
-            DefaultTableModel val = (DefaultTableModel) tblBuscarProduto.getModel();
+            //DefaultTableModel val = (DefaultTableModel) tblBuscarProduto.getModel();
             //f.format(result);
             System.out.println("result =" + result);
-            System.out.println("cod itm = " + vendaitens.getCod());
-            val.addRow(new String[]{(Integer.toString(vi.ultimoIDInserido())), descricao, quantidade, Float.toString(valor1) ,Float.toString(result)});
+            //System.out.println("cod itm = " + vendaitens.getCod());
+            //val.addRow(new String[]{(Integer.toString(vi.ultimoIDInserido())), descricao, quantidade, Float.toString(valor1) ,Float.toString(result)});
             System.out.println("OK");
            /* System.out.println("ID = "+cod);
             System.out.println("Quantidade = " +quantidade);
@@ -562,7 +570,7 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Digite apenas números!");
         }
-        System.out.println("cod itm = " + vendaitens.getCod());
+        //System.out.println("cod itm = " + vendaitens.getCod());
       } else {
             JOptionPane.showMessageDialog(null, "Para adicionar itens você precisa gerar uma venda ou selecionar uma existente!!");
             tfdCodigoProduto.setText("");
@@ -596,27 +604,27 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     }
    // define valores para codigo e nome do funcionario
     public void definirFuncionario(String cod, String nome) {
-        tfdPessoa.setText(nome);
-        tfdCodpessoa.setText(cod);
+        tfdFuncionario.setText(nome);
+        tfdCodfuncionario.setText(cod);
 
         btnGerar.requestFocus();
     }
     
-        public void definirVenda(String cod, String cliente, String clientecod, String datavenda, String pessoanome, String pessoacod, String statusvenda) {
+        public void definirVenda(String cod, String cliente, String clientecod, String datavenda, String pessoanome, String pessoacod) {
         tfdCliente.setText(cliente);
         tfdCodcliente.setText(clientecod);
         tffDataVenda.setText(datavenda);
-        tfdPessoa.setText(pessoanome);
-        tfdCodpessoa.setText(pessoacod);
-        valortotal = 0;
+        tfdFuncionario.setText(pessoanome);
+        tfdCodfuncionario.setText(pessoacod);
+        int valortotal = 0;
         tfdValorTotal.setText("0.00");
         
-        cod_venda = Integer.parseInt(cod);
-        new VendaProdutoDAO().popularTabela(tblBuscarProduto, cod);
+        int cod_venda = Integer.parseInt(cod);
+        //new VendaProdutoDAO().popularTabela(tblBuscarProduto, cod);
         float valor;
         for (int i = 0; i < tblBuscarProduto.getRowCount(); i++) {
             valor = Float.parseFloat(String.valueOf(tblBuscarProduto.getValueAt(i, 4)));
-            valortotal = (valortotal + valor);
+            //valortotal = (valortotal + valor);
             tfdValorTotal.setText("" + valortotal);
         }
 
@@ -630,7 +638,7 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnGerar;
     private javax.swing.JButton btnPesquisarCliente;
-    private javax.swing.JButton btnPesquisarPessoa;
+    private javax.swing.JButton btnPesquisarFuncionario;
     private javax.swing.JButton btnPesquisarProduto;
     private javax.swing.JButton btnPesquisarVenda;
     private javax.swing.JButton btnReset;
@@ -651,10 +659,10 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblBuscarProduto;
     private javax.swing.JTextField tfdCliente;
     private javax.swing.JTextField tfdCodcliente;
+    private javax.swing.JTextField tfdCodfuncionario;
     private javax.swing.JTextField tfdCodigoProduto;
-    private javax.swing.JTextField tfdCodpessoa;
     private javax.swing.JTextField tfdDescricao;
-    private javax.swing.JTextField tfdPessoa;
+    private javax.swing.JTextField tfdFuncionario;
     private javax.swing.JTextField tfdQuantidade;
     private javax.swing.JTextField tfdValorProduto;
     private javax.swing.JTextField tfdValorTotal;

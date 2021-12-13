@@ -37,7 +37,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="tfdBusca" max="32767" attributes="0"/>
+                      <Component id="tfdBuscar" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BtnPesquisar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -53,7 +53,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BtnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfdBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfdBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
@@ -86,10 +86,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Busca"/>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfdBusca">
+    <Component class="javax.swing.JTextField" name="tfdBuscar">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

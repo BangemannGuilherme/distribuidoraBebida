@@ -195,6 +195,8 @@ insert into funcionario values(1, 'Bóris', '12345678912','1234567891', current_
 insert into usuario values(1, 'admin', 'admin', current_date, current_date, 'A', 0, 1);
 insert into funcionario values(2, 'User', '33333','1234567891', current_date, 'Masculino', 1);
 insert into usuario values(2, 'usuario', 'usuario', current_date, current_date, 'A', 1, 2);
+insert into entidade values(4, 'Rua Amazonas', 'Centro', '458', 'A', 1, '5137501010', '51999999999', 'email@email.com',1);
+insert into cliente values(1, 'McDonalds', '42.591.651/0001-43','A', 1);
 
 INSERT INTO estado(id_estado, estado, sigla_estado, situacao) VALUES ('1', 'Rio Grande do Sul', 'RS', 'A') ON CONFLICT DO NOTHING;
 INSERT INTO cidade(id_cidade, cidade, id_usuario_cadastro, situacao, id_estado) VALUES ('1', 'Estrela', '1', 'A' ,'1') ON CONFLICT DO NOTHING;

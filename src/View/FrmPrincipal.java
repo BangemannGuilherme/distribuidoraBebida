@@ -458,7 +458,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFuncionarioActionPerformed
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        IfrVenda1 ifrVenda = new IfrVenda1();
+        IfrVenda ifrVenda = new IfrVenda();
         dskPrincipal.add(ifrVenda);
         ifrVenda.setVisible(true);
     }//GEN-LAST:event_btnVendaActionPerformed

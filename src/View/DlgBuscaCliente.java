@@ -5,8 +5,13 @@
  */
 package View;
 
-import dao.ClienteDAO;
-import javax.swing.JInternalFrame;
+import DAO.ClienteDAO;
+import TableModel.ClienteTableModel;
+import TableModel.ClienteTableModel;
+import Utils.JTableUtilities;
+import javax.swing.JDesktopPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -15,16 +20,27 @@ import javax.swing.JInternalFrame;
 public class DlgBuscaCliente extends javax.swing.JDialog {
 
     IfrVenda ifrVendaLocal = null;
+    JDesktopPane dskPrincipal = new JDesktopPane();
+    ClienteTableModel tableModel = new ClienteTableModel();
     
     public DlgBuscaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        tblCliente.setModel(tableModel);
+        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblCliente, SwingConstants.CENTER, new int[]{0, 1});
+        tblCliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
         DlgBuscaCliente(java.awt.Frame parent, boolean modal, IfrVenda ifrVenda ) {
         super(parent, modal);
         initComponents();
         ifrVendaLocal = ifrVenda;
-        
+        tblCliente.setModel(tableModel);
+        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblCliente, SwingConstants.CENTER, new int[]{0, 1});
+        tblCliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha        
     }
     
     /**
@@ -39,7 +55,7 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
         BtnPesquisar = new javax.swing.JButton();
         BtnFechar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tfdBusca = new javax.swing.JTextField();
+        tfdBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
         BtnSelecionar = new javax.swing.JButton();
@@ -61,7 +77,7 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Busca");
+        jLabel1.setText("Buscar");
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,7 +115,7 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfdBusca)
+                        .addComponent(tfdBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(BtnPesquisar)))
                 .addGap(24, 24, 24))
@@ -111,7 +127,7 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnPesquisar)
                     .addComponent(jLabel1)
-                    .addComponent(tfdBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -129,8 +145,7 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnFecharActionPerformed
 
     private void BtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPesquisarActionPerformed
-         new ClienteDAO().popularTabela(tblCliente, tfdBusca.getText());
-    
+        this.tableModel.updateData(tfdBuscar.getText());    
     }//GEN-LAST:event_BtnPesquisarActionPerformed
 
     private void BtnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSelecionarActionPerformed
@@ -194,6 +209,6 @@ public class DlgBuscaCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCliente;
-    private javax.swing.JTextField tfdBusca;
+    private javax.swing.JTextField tfdBuscar;
     // End of variables declaration//GEN-END:variables
 }

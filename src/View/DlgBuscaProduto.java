@@ -5,7 +5,13 @@
  */
 package View;
 
-import dao.ProdutoDAO;
+import DAO.ProdutoDAO;
+import TableModel.ProdutoTableModel;
+import TableModel.ProdutoTableModel;
+import Utils.JTableUtilities;
+import javax.swing.JDesktopPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -13,18 +19,29 @@ import dao.ProdutoDAO;
  */
 public class DlgBuscaProduto extends javax.swing.JDialog {
     IfrVenda ifrVendaLocal = null;
-
+    JDesktopPane dskPrincipal = new JDesktopPane();
+    ProdutoTableModel tableModel = new ProdutoTableModel();
     /**
      * Creates new form DlgBuscaProduto
      */
     public DlgBuscaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        tblProduto.setModel(tableModel);
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblProduto.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblProduto, SwingConstants.CENTER, new int[]{0, 1});
+        tblProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
     DlgBuscaProduto(java.awt.Frame parent, boolean modal, IfrVenda ifrVenda) {
         super(parent, modal);
         initComponents();
         ifrVendaLocal = ifrVenda;
+        tblProduto.setModel(tableModel);
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblProduto.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblProduto, SwingConstants.CENTER, new int[]{0, 1});
+        tblProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
 
     /**
@@ -37,7 +54,7 @@ public class DlgBuscaProduto extends javax.swing.JDialog {
     private void initComponents() {
 
         lblBusca = new javax.swing.JLabel();
-        tfdBusca = new javax.swing.JTextField();
+        tfdBuscar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
@@ -101,7 +118,7 @@ public class DlgBuscaProduto extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblBusca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfdBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                                .addComponent(tfdBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnPesquisar)))))
                 .addGap(19, 19, 19))
@@ -112,7 +129,7 @@ public class DlgBuscaProduto extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBusca)
-                    .addComponent(tfdBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
@@ -127,7 +144,7 @@ public class DlgBuscaProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        new ProdutoDAO().popularTabela(tblProduto, tfdBusca.getText());
+        this.tableModel.updateData(tfdBuscar.getText());    
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -200,6 +217,6 @@ public class DlgBuscaProduto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBusca;
     private javax.swing.JTable tblProduto;
-    private javax.swing.JTextField tfdBusca;
+    private javax.swing.JTextField tfdBuscar;
     // End of variables declaration//GEN-END:variables
 }

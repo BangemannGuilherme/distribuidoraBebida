@@ -7,7 +7,10 @@ package View;
 
 import DAO.FuncionarioDAO;
 import TableModel.FuncionarioTableModel;
+import Utils.JTableUtilities;
 import javax.swing.JDesktopPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -25,10 +28,20 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
     public DlgBuscaFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        tblFuncionario.setModel(tableModel);
+        tblFuncionario.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblFuncionario.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblFuncionario, SwingConstants.CENTER, new int[]{0, 1});
+        tblFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
     }
     DlgBuscaFuncionario(java.awt.Frame parent, boolean modal, IfrVenda ifrVenda) {
         super(parent, modal);
         initComponents();
+        tblFuncionario.setModel(tableModel);
+        tblFuncionario.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblFuncionario.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblFuncionario, SwingConstants.CENTER, new int[]{0, 1});
+        tblFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
         ifrVendaLocal = ifrVenda;
     }
 
@@ -41,8 +54,8 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblBusca = new javax.swing.JLabel();
-        tfdBusca = new javax.swing.JTextField();
+        lblBuscar = new javax.swing.JLabel();
+        tfdBuscar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
@@ -52,7 +65,7 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Funcionário");
 
-        lblBusca.setText("Busca");
+        lblBuscar.setText("Buscar");
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,9 +110,9 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblBusca)
+                        .addComponent(lblBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfdBusca)
+                        .addComponent(tfdBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -114,8 +127,8 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBusca)
-                    .addComponent(tfdBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBuscar)
+                    .addComponent(tfdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
@@ -131,7 +144,6 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         this.tableModel.updateData(tfdBuscar.getText());
-        new FuncionarioDAO().popularTabela(tblFuncionario, tfdBusca.getText());
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -173,70 +185,6 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DlgBuscaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -258,8 +206,8 @@ public class DlgBuscaFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBusca;
+    private javax.swing.JLabel lblBuscar;
     private javax.swing.JTable tblFuncionario;
-    private javax.swing.JTextField tfdBusca;
+    private javax.swing.JTextField tfdBuscar;
     // End of variables declaration//GEN-END:variables
 }

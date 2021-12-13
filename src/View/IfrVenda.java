@@ -45,7 +45,6 @@ public class IfrVenda extends javax.swing.JInternalFrame {
      */
     public IfrVenda() {
         initComponents();
-        Formatacao.formatarData(tffDataVenda);
         tffDataVenda.setText(new Calendario().obterDataAtualDMA());
     }
 
@@ -412,14 +411,14 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         tfdQuantidade.setText("");
         tfdDescricao.setText("");
         venda.setCod(0);
-        new VendaItensDAO().popularTabela(tblBuscarProduto, null);
+        new VendaProdutoDAO().popularTabela(tblBuscarProduto, null);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int cod = Integer.parseInt(String.valueOf(tblBuscarProduto.getValueAt(tblBuscarProduto.getSelectedRow(), 0)));
-        VendaItensDAO leDAO = new VendaItensDAO();
+        VendaProdutoDAO leDAO = new VendaProdutoDAO();
         leDAO.excluir(cod);
-        new VendaItensDAO().popularTabela(tblBuscarProduto, Integer.toString(cod_venda));
+        new VendaProdutoDAO().popularTabela(tblBuscarProduto, Integer.toString(cod_venda));
         float valor;
         valortotal = 0;
         for (int i = 0; i < tblBuscarProduto.getRowCount(); i++) {
@@ -496,30 +495,6 @@ public class IfrVenda extends javax.swing.JInternalFrame {
             
 
         }
-
-        /*String retorno = null;
-        if (venda.getId() == 0) {
-            retorno = vendaDAO.salvar(venda);
-        } else {
-            retorno = vendaDAO.atualizar(venda);
-        }
-
-
-        if (retorno == null) {
-            JOptionPane.showMessageDialog(null, "Registro salvo com sucesso!");'
-            System.out.println(retorno);
-
-            id_venda= 0;
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Problemas ao salvar registro!\n\n"
-                    + "Mensagem técnica:\n"
-                    + "Erro: " + retorno);
-        }
-        } 
-      } catch (Exception e) {
-          
-      }*/
     }//GEN-LAST:event_btnGerarActionPerformed
 
     private void btnPesquisarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarVendaActionPerformed
@@ -535,8 +510,8 @@ public class IfrVenda extends javax.swing.JInternalFrame {
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
         if (!tfdCliente.getText().isEmpty() && !tfdCodcliente.getText().isEmpty() && !tffDataVenda.getText().isEmpty() && !tfdPessoa.getText().isEmpty() && !tfdCodpessoa.getText().isEmpty()) {
         int idz;
-        VendaItensDAO vi = new VendaItensDAO();
-        VendaItens vendaitens = new VendaItens();
+        VendaProdutoDAO vi = new VendaProdutoDAO();
+        VendaProduto vendaitens = new VendaProduto();
         Venda venda = new Venda();
         if ("".equals(tfdQuantidade.getText()) || "".equals(tfdCodigoProduto.getText()) || "".equals(tfdDescricao.getText())) {
             JOptionPane.showMessageDialog(null, "Preencha os campos Obrigatórios!");
@@ -561,7 +536,7 @@ public class IfrVenda extends javax.swing.JInternalFrame {
             vendaitens.setCod(cod_it);
             vendaitens.setProduto_cod(Integer.parseInt(tfdCodigoProduto.getText()));
             vendaitens.setQuantidade(Integer.parseInt(tfdQuantidade.getText()));
-            vendaitens.setVenda_cod(cod_venda);
+            vendaitens.setId_venda(cod_venda);
             vendaitens.setValor_venda(Float.parseFloat(tfdValorTotal.getText()));
 
             JOptionPane.showMessageDialog(null, vi.salvar(vendaitens));
@@ -637,7 +612,7 @@ public class IfrVenda extends javax.swing.JInternalFrame {
         tfdValorTotal.setText("0.00");
         
         cod_venda = Integer.parseInt(cod);
-        new VendaItensDAO().popularTabela(tblBuscarProduto, cod);
+        new VendaProdutoDAO().popularTabela(tblBuscarProduto, cod);
         float valor;
         for (int i = 0; i < tblBuscarProduto.getRowCount(); i++) {
             valor = Float.parseFloat(String.valueOf(tblBuscarProduto.getValueAt(i, 4)));

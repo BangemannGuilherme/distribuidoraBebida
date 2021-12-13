@@ -21,14 +21,14 @@ public class DlgSelecionaObjeto extends javax.swing.JDialog {
     ProdutoTableModel tableModelProduto = null;
     FuncionarioTableModel tableModelFuncionario = null;
     String tableName = "";
-    IfrVenda parent = null;
+    IfrVenda1 parent = null;
 
     public DlgSelecionaObjeto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    public DlgSelecionaObjeto(IfrVenda parent, boolean modal, String tableName,
+    public DlgSelecionaObjeto(IfrVenda1 parent, boolean modal, String tableName,
             ProdutoTableModel tableModel) {
         initComponents();
         this.parent = parent;
@@ -40,7 +40,7 @@ public class DlgSelecionaObjeto extends javax.swing.JDialog {
         tb.setTitle(tb.getTitle() + " " + this.tableName);
     }
 
-    public DlgSelecionaObjeto(IfrVenda parent, boolean modal, String tableName,
+    public DlgSelecionaObjeto(IfrVenda1 parent, boolean modal, String tableName,
             FuncionarioTableModel tableModel) {
         initComponents();
         this.parent = parent;

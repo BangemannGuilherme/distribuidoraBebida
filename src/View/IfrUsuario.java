@@ -93,7 +93,7 @@ public class IfrUsuario extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Permissão: *");
 
-        jcbPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuário", "Recepcionista" }));
+        jcbPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuário" }));
 
         javax.swing.GroupLayout pnlCadastrarLayout = new javax.swing.GroupLayout(pnlCadastrar);
         pnlCadastrar.setLayout(pnlCadastrarLayout);
@@ -298,8 +298,6 @@ public class IfrUsuario extends javax.swing.JInternalFrame {
                 u.setPermissao(0);
             }else if (jcbPermissao.getSelectedIndex() == 1){ //Usuário
                 u.setPermissao(1);
-            }else{//Recepcionista
-                u.setPermissao(2);
             }
             if (id == 0) {
                 Integer returnOfSavedID = dao.save(u);//ID recem adicionado pronto para ser usado em outro local

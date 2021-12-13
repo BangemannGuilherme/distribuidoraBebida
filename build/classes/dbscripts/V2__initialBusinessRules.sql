@@ -47,42 +47,42 @@ CREATE TRIGGER audit_cidade
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();
 
-CREATE TRIGGER audit_produto
+CREATE TRIGGER audit_estado
+  AFTER INSERT OR UPDATE OR DELETE 
+  ON estado 
+  FOR EACH ROW 
+EXECUTE PROCEDURE audit_trigger();
+
+CREATE TRIGGER audit_produto 
   AFTER INSERT OR UPDATE OR DELETE 
   ON produto 
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();
 
-CREATE TRIGGER audit_quarto 
+CREATE TRIGGER audit_tipo_produto
   AFTER INSERT OR UPDATE OR DELETE 
-  ON quarto 
-  FOR EACH ROW 
-EXECUTE PROCEDURE audit_trigger();
-
-CREATE TRIGGER audit_tipo_quarto
-  AFTER INSERT OR UPDATE OR DELETE 
-  ON tipo_quarto 
+  ON tipo_produto 
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();
 
 -- VIEWS
 
-CREATE VIEW pessoa_fisica_v AS (
+CREATE VIEW funcionario_v AS (
 SELECT
-	a.nm_pessoa_fisica,
-	a.nr_cpf,
-	a.nr_rg,
+	a.nome,
+	a.cpf,
+	a.rg,
 	a.dt_nascimento,
-	a.ie_sexo,
-	c.ds_cidade,
-	b.ds_endereco,
-	b.ds_bairro,
-	b.nr_endereco,
-	b.nr_telefone,
-	b.nr_celular,
-	b.ds_email
+	a.sexo,
+	c.cidade,
+	b.endereco,
+	b.bairro,
+	b.numero,
+	b.telefone,
+	b.celular,
+	b.email
 FROM
-	pessoa_fisica a,
+	funcionario a,
 	entidade b,
 	cidade c
 WHERE
@@ -92,78 +92,53 @@ ORDER BY
 	b.id_entidade
 );
 
-CREATE VIEW quarto_v AS (
+CREATE VIEW produto_v AS (
 SELECT
-	a.nr_quarto,
-	a.nr_andar,
-	b.ds_tipo_quarto,
-	b.nr_capacidade,
-	b.nr_comodo,
-	b.nr_banheiro,
-	b.vl_reserva
+	a.descricao,
+	b.marca,
+	b.recipiente,
+	b.volume,
+	a.valor
 FROM
-	quarto a,
-	tipo_quarto b
+	produto a,
+	tipo_produto b
 WHERE
-	a.id_tipo_quarto = b.id_tipo_quarto
+	a.id_tipo_produto = b.id_tipo_produto
 ORDER BY
-	a.nr_quarto,
-	a.nr_andar
+	a.descricao,
+	b.marca
 );
 
-
-CREATE VIEW pessoa_juridica_v AS (
-SELECT
-	a.nm_fantasia,
-	a.nm_razao_social,
-	a.nr_cnpj,
-	c.ds_cidade,
-	b.ds_endereco,
-	b.ds_bairro,
-	b.nr_endereco,
-	b.nr_telefone,
-	b.nr_celular,
-	b.ds_email
-FROM
-	pessoa_juridica a,
-	entidade b,
-	cidade c
-WHERE
-	a.id_entidade = b.id_entidade
-	AND b.id_cidade = c.id_cidade
-ORDER BY
-	b.id_entidade
-);
 
 -- PROCEDURES
 
-CREATE OR REPLACE FUNCTION data_reserva (dtinicio date, dtfim date)
-RETURNS SETOF reserva
+CREATE OR REPLACE FUNCTION data_venda (dt_venda date)
+RETURNS SETOF venda
 AS $$
 SELECT *
-FROM reserva
-WHERE dt_reserva BETWEEN $1 AND  $2
+FROM venda
+WHERE dt_venda = $1
 $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION busca_andar (nr text)
+CREATE OR REPLACE FUNCTION busca_marca (marca text)
 RETURNS text
 AS $$
-SELECT nr_andar
-FROM quarto
-WHERE nr_quarto = $1
+SELECT marca
+FROM produto
+WHERE marca = $1
 $$ LANGUAGE sql;
 
 -- Triggers de validação
 
 CREATE FUNCTION valida_produto() RETURNS trigger AS $valida_produto$
     BEGIN
-        IF NEW.ds_produto IS NULL THEN
+        IF NEW.descricao IS NULL THEN
             RAISE EXCEPTION 'A descrição do produto não pode ser nula';
         END IF;
-        IF NEW.vl_venda IS NULL THEN
+        IF NEW.valor IS NULL THEN
             RAISE EXCEPTION '% não pode ter um valor nulo', NEW.nome;
         END IF;      
-	IF NEW.vl_venda < 0 THEN
+	IF NEW.valor < 0 THEN
             RAISE EXCEPTION '% não pode ter um valor negativo', NEW.nome;
         END IF;
         

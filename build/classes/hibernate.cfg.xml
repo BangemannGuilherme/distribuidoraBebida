@@ -13,6 +13,7 @@
     <mapping class="Entidade.Entidade"/>
     <mapping class="Entidade.Funcionario"/>
     <mapping class="Entidade.Cliente"/>
+    <mapping class="Entidade.Fornecedor"/>
     <mapping class="Entidade.TipoProduto"/>
     <mapping class="Entidade.Produto"/>
     <mapping class="Entidade.Usuario"/>

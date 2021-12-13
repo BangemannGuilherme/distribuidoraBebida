@@ -32,12 +32,15 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
 
     public IfrFuncionario() {
         initComponents();
-        tblPessoa.setModel(tableModel);
-        tblPessoa.getColumnModel().getColumn(0).setPreferredWidth(10);
-        tblPessoa.getColumnModel().getColumn(1).setPreferredWidth(780);
-        JTableUtilities.setCellsAlignment(tblPessoa, SwingConstants.CENTER, new int[]{0, 2});
-        tblPessoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
-        FrmPrincipal frmPrincipal = new FrmPrincipal();
+        tblFuncionario.setModel(tableModel);
+        tblFuncionario.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblFuncionario.getColumnModel().getColumn(1).setPreferredWidth(780);
+        JTableUtilities.setCellsAlignment(tblFuncionario, SwingConstants.CENTER, new int[]{0, 1});
+        tblFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//seleção de única linha
+        
+        
+        //JTableUtilities.setCellsAlignment(tblFuncionario, SwingConstants.CENTER, new int[]{0, 2});;
+        //FrmPrincipal frmPrincipal = new FrmPrincipal();
         Formatacao.formatarData(tfdDataNascimento);
     }
 
@@ -84,7 +87,7 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         tfdBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPessoa = new javax.swing.JTable();
+        tblFuncionario = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
@@ -294,7 +297,7 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        tblPessoa.setModel(new javax.swing.table.DefaultTableModel(
+        tblFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -305,8 +308,8 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblPessoa.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(tblPessoa);
+        tblFuncionario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(tblFuncionario);
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/delete-30.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -474,27 +477,27 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (tblPessoa.getSelectedRow() != -1) {
-            //remonta o produto, possuindo o ID, basta buscar os dados no banco:
+        if (tblFuncionario.getSelectedRow() != -1) {
+            //remonta o funcionario, possuindo o ID, basta buscar os dados no banco:
             EntidadeDAO entidadeDAO = new EntidadeDAO();
-            Entidade entidade = entidadeDAO.findById((int) tableModel.getValueAt(tblPessoa.getSelectedRow(), 5));
+            Entidade entidade = entidadeDAO.findById((int) tableModel.getValueAt(tblFuncionario.getSelectedRow(), 6));
             entidade.setSituacao('I'); //INATIVANDO
             String retorno = entidadeDAO.update(entidade);
             if (retorno == null) {
-                JOptionPane.showMessageDialog(null, "Pessoa excluída com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Funcionário excluída com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                 this.tableModel.updateData("");
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir Pessoa\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro ao excluir Funcionário\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
             this.tableModel.updateData("");
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma Pessoa para Excluir.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um Funcionário para Excluir.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-//        if (tblPessoa.getSelectedRow() != -1) {
-//            this.idFuncionario = (int) tableModel.getValueAt(tblPessoa.getSelectedRow(), 0);
+//        if (tblFuncionário.getSelectedRow() != -1) {
+//            this.idFuncionario = (int) tableModel.getValueAt(tblFuncionário.getSelectedRow(), 0);
 //            tfdMostraId.setText(String.valueOf(idFuncionario));
 //            txaDescricao.setText(String.valueOf(tableModel.getValueAt(tblProduto.getSelectedRow(), 1)));
 //            tfdValor.setText(String.valueOf(tableModel.getValueAt(tblProduto.getSelectedRow(), 2)));
@@ -586,7 +589,7 @@ public class IfrFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlCadastrar;
     private javax.swing.JPanel pnlConsultar;
     private javax.swing.JTabbedPane pnlProduto;
-    private javax.swing.JTable tblPessoa;
+    private javax.swing.JTable tblFuncionario;
     private javax.swing.JTextField tfdBairro;
     private javax.swing.JTextField tfdBuscar;
     private javax.swing.JTextField tfdCelular;

@@ -1,12 +1,3 @@
-/* 
- Alterações realizadas para aumentar a segurança da trigger de auditoria.
- Criação de chave estrangeira que vincula a tabela de usuários à tabela de auditoria
- */
-/**
- * Author:  evand
- * Created: 30/09/2020
- */
-
 -- Excluindo a tabela e trigger
 
 drop table audit_log;
@@ -66,20 +57,20 @@ CREATE TRIGGER audit_cidade
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();
 
-CREATE TRIGGER audit_produto
+CREATE TRIGGER audit_funcionario
+  AFTER INSERT OR UPDATE OR DELETE 
+  ON funcionario 
+  FOR EACH ROW 
+EXECUTE PROCEDURE audit_trigger();
+
+CREATE TRIGGER audit_produto 
   AFTER INSERT OR UPDATE OR DELETE 
   ON produto 
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();
 
-CREATE TRIGGER audit_quarto 
+CREATE TRIGGER audit_tipo_produto
   AFTER INSERT OR UPDATE OR DELETE 
-  ON quarto 
-  FOR EACH ROW 
-EXECUTE PROCEDURE audit_trigger();
-
-CREATE TRIGGER audit_tipo_quarto
-  AFTER INSERT OR UPDATE OR DELETE 
-  ON tipo_quarto 
+  ON tipo_produto 
   FOR EACH ROW 
 EXECUTE PROCEDURE audit_trigger();

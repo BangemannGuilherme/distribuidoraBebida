@@ -1,13 +1,59 @@
 -- -----------------------------------------------------
+-- Table estado
+-- -----------------------------------------------------
+create table estado(
+  id_estado serial not null, 
+  estado varchar(45) not null, 
+  sigla_estado varchar(2) not null, 
+  situacao varchar(1) not null, 
+  constraint PK_estado primary key (id_estado))
+;
+
+
+-- -----------------------------------------------------
+-- Table cidade
+-- -----------------------------------------------------
+create table cidade(
+  id_cidade serial not null, 
+  cidade varchar(45) not null, 
+  id_usuario_cadastro integer not null, 
+  situacao varchar(1) not null, 
+  id_estado integer not null, 
+  constraint PK_cidade primary key (id_cidade), 
+  constraint FK_cidade_estado foreign key (id_estado) references estado)
+;
+
+
+-- -----------------------------------------------------
+-- Table entidade
+-- -----------------------------------------------------
+create table entidade(
+  id_entidade serial not null, 
+  endereco varchar(45) not null, 
+  bairro varchar(45) not null, 
+  numero varchar(45) not null, 
+  situacao varchar(1) not null, 
+  id_usuario_cadastro integer not null, 
+  telefone varchar(45), 
+  celular varchar(45), 
+  email varchar(45), 
+  id_cidade integer not null, 
+  constraint PK_entidade primary key (id_entidade), 
+  constraint FK_entidade_cidade foreign key (id_cidade) references cidade)
+;
+
+
+-- -----------------------------------------------------
 -- Table cliente
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cliente (
-  id SERIAL NOT NULL,
+  id_cliente SERIAL NOT NULL,
   razaosocial VARCHAR(100) NOT NULL,
   cnpj VARCHAR(100) NOT NULL,
-  telefone VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+  situacao varchar(1),
+  id_entidade integer not null,
+  constraint PK_cliente primary key (id_cliente),
+  constraint FK_cliente_entidade foreign key (id_entidade) references entidade) 
 ;
 
 
@@ -15,12 +61,13 @@ CREATE TABLE IF NOT EXISTS cliente (
 -- Table fornecedor
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS fornecedor (
-  id SERIAL NOT NULL,
+  id_fornecedor SERIAL NOT NULL,
   razaosocial VARCHAR(100) NOT NULL,
   cnpj VARCHAR(100) NOT NULL,
-  telefone VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+  situacao varchar(1),
+  id_entidade integer not null,
+  constraint PK_fornecedor primary key (id_fornecedor),
+  constraint FK_cliente_entidade foreign key (id_entidade) references entidade) 
 ;
 
 
@@ -28,197 +75,129 @@ CREATE TABLE IF NOT EXISTS fornecedor (
 -- Table funcionario
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS funcionario (
-  id SERIAL NOT NULL,
+  id_funcionario SERIAL NOT NULL,
   nome VARCHAR(100) NOT NULL,
   cpf VARCHAR(100) NOT NULL,
-  telefone VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+  rg VARCHAR(100) NOT NULL,
+  dt_nascimento DATE NOT NULL,
+  sexo varchar(45) NOT NULL,
+  id_entidade integer not null, 
+  constraint PK_funcionario primary key (id_funcionario), 
+  constraint FK_funcionario_entidade foreign key (id_entidade) references entidade)
 ;
 
 
 -- -----------------------------------------------------
--- Table login
+-- Table usuario
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS usuario (
-  id_usuario SERIAL NOT NULL,
-  login VARCHAR(100) NOT NULL,
-  senha VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+create table IF NOT EXISTS usuario(
+  id_usuario serial not null, 
+  login varchar(45) not null, 
+  senha varchar(45) not null, 
+  dt_criacao date not null, 
+  dt_alteracao_senha date,
+  situacao varchar(1) not null, 
+  permissao varchar(1) not null,
+  id_funcionario integer not null, 
+  constraint PK_usuario primary key (id_usuario), 
+  constraint FK_usuario_funcionario foreign key (id_funcionario) references funcionario)
+;
+
+
+-- -----------------------------------------------------
+-- Table permissao
+-- -----------------------------------------------------
+create table permissao(
+	id_permissao serial not null, 
+	descricao varchar(45) not null, 
+	id_usuario_cadastro integer not null, 
+	situacao varchar(1) not null, 
+	constraint PK_permissao primary key (id_permissao))
+;
+
+
+-- -----------------------------------------------------
+-- Table permissao_usuario
+-- -----------------------------------------------------
+create table permissao_usuario(
+  id_permissao integer not null,
+  id_usuario integer not null,
+  id_usuario_cadastro integer not null,
+  constraint PK_permissao_usuario primary key (id_permissao, id_usuario),
+  constraint FK_permissao_usuario_permissao foreign key (id_permissao) references permissao,
+  constraint FK_permissao_usuario_usuario foreign key (id_usuario) references usuario)
 ;
 
 
 -- -----------------------------------------------------
 -- Table tipo_produto
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tipo_produto (
-  id SERIAL NOT NULL,
-  descricao VARCHAR(100) NOT NULL,
-  situacao VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id))
+create table tipo_produto(
+  id_tipo_produto serial not null, 
+  marca varchar(100) not null,
+  recipiente varchar(100) not null,
+  volume decimal(11,2) not null, 
+  id_usuario_cadastro integer not null, 
+  situacao varchar(1) not null, 
+  constraint PK_tipo_produto primary key (id_tipo_produto))
 ;
 
 
 -- -----------------------------------------------------
 -- Table produto
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS produto (
-  id SERIAL NOT NULL,
-  descricao VARCHAR(100) NOT NULL,
-  valor DECIMAL(10,2) NOT NULL,
-  tipo_produto_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_produto_tipo_produto
-    FOREIGN KEY (tipo_produto_id)
-    REFERENCES tipo_produto (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
-
-
--- -----------------------------------------------------
--- Table estoque
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS estoque (
-  id SERIAL NOT NULL,
-  quantidade INT NOT NULL,
-  produto_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_estoque_produto
-    FOREIGN KEY (produto_id)
-    REFERENCES produto (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+create table produto(
+  id_produto serial not null, 
+  descricao varchar(100) not null, 
+  valor decimal(11,2) not null, 
+  id_usuario_cadastro integer not null, 
+  situacao varchar(1) not null, 
+  id_tipo_produto integer not null, 
+  constraint PK_produto primary key (id_produto), 
+  constraint FK_produto_tipo_produto foreign key (id_tipo_produto) references tipo_produto)
 ;
 
 
 -- -----------------------------------------------------
 -- Table venda
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS venda (
-  id SERIAL NOT NULL,
-  data DATE NOT NULL,
-  valor VARCHAR(45) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
-  funcionario_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_venda_funcionario
-    FOREIGN KEY (funcionario_id)
-    REFERENCES funcionario (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+create table venda(
+  id_venda serial not null, 
+  dt_venda date not null, 
+  id_usuario_cadastro integer not null, 
+  id_cliente integer not null,
+  id_funcionario integer not null, 
+  constraint PK_venda primary key (id_venda), 
+  constraint FK_venda_cliente foreign key (id_cliente) references cliente,
+  constraint FK_venda_funcionario foreign key (id_funcionario) references funcionario)
 ;
 
 
 -- -----------------------------------------------------
 -- Table venda_produto
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS venda_produto (
-  id SERIAL NOT NULL,
-  data DATE NOT NULL,
-  valor_produto DECIMAL(10,2) NOT NULL,
-  quantidade INT NOT NULL,
-  produto_id INT NOT NULL,
-  venda_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_venda_produto_produto
-    FOREIGN KEY (produto_id)
-    REFERENCES produto (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_venda_produto_venda
-    FOREIGN KEY (venda_id)
-    REFERENCES venda (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+create table venda_produto(
+  id_venda_produto integer not null,
+  quantidade integer not null,
+  vl_venda decimal(11,2) not null,
+  id_venda integer not null, 
+  id_produto integer not null, 
+  constraint PK_venda_produto primary key (id_venda_produto), 
+  constraint FK_venda_produto_venda foreign key (id_venda) references venda, 
+  constraint FK_venda_produto_produto foreign key (id_produto) references produto)
 ;
 
 
--- -----------------------------------------------------
--- Table compra
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS compra (
-  id SERIAL NOT NULL,
-  data DATE NOT NULL,
-  valor VARCHAR(45) NOT NULL,
-  situacao VARCHAR(1) NOT NULL,
-  funcionario_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_compra_funcionario
-    FOREIGN KEY (funcionario_id)
-    REFERENCES funcionario (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
+insert into estado values(1,'Rio Grande do Sul','RS','A');
+insert into cidade values(1, 'Lajeado',1,'A',1);
+insert into entidade values(1, 'Rua 123', 'Central', '123','A',1,'5137501010','51999999999','email@email.com',1);
+insert into funcionario values(1, 'Bóris', '12345678912','1234567891', current_date, 'Masculino', 1);
+insert into usuario values(1, 'admin', 'admin', current_date, current_date, 'A', 0, 1);
+insert into funcionario values(2, 'User', '33333','1234567891', current_date, 'Masculino', 1);
+insert into usuario values(2, 'usuario', 'usuario', current_date, current_date, 'A', 1, 2);
 
-
--- -----------------------------------------------------
--- Table contas_pagar
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS contas_pagar (
-  id SERIAL NOT NULL,
-  valor DECIMAL(10,2) NOT NULL,
-  data_vencimento VARCHAR(45) NOT NULL,
-  fornecedor_id INT NOT NULL,
-  compra_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_contas_pagar_fornecedor
-    FOREIGN KEY (fornecedor_id)
-    REFERENCES fornecedor (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_contas_pagar_compra
-    FOREIGN KEY (compra_id)
-    REFERENCES compra (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
-
-
--- -----------------------------------------------------
--- Table contas_receber
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS contas_receber (
-  id SERIAL NOT NULL,
-  valor DECIMAL(10,2) NOT NULL,
-  data_vencimento VARCHAR(45) NOT NULL,
-  cliente_id INT NOT NULL,
-  venda_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_contas_receber_cliente
-    FOREIGN KEY (cliente_id)
-    REFERENCES cliente (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_contas_receber_venda
-    FOREIGN KEY (venda_id)
-    REFERENCES venda (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
-
-
--- -----------------------------------------------------
--- Table compra_produto
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS compra_produto (
-  id SERIAL NOT NULL,
-  data DATE NOT NULL,
-  valor_produto DECIMAL(10,2) NOT NULL,
-  quantidade INT NOT NULL,
-  produto_id INT NOT NULL,
-  compra_id INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_compra_produto_produto
-    FOREIGN KEY (produto_id)
-    REFERENCES produto (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_compra_produto_compra
-    FOREIGN KEY (compra_id)
-    REFERENCES compra (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
-
-INSERT INTO login(id, usuario, senha) VALUES ('9999', 'admin', '21232f297a57a5a743894a0e4a801fc3') ON CONFLICT DO NOTHING;
+INSERT INTO estado(id_estado, estado, sigla_estado, situacao) VALUES ('1', 'Rio Grande do Sul', 'RS', 'A') ON CONFLICT DO NOTHING;
+INSERT INTO cidade(id_cidade, cidade, id_usuario_cadastro, situacao, id_estado) VALUES ('1', 'Estrela', '1', 'A' ,'1') ON CONFLICT DO NOTHING;
+INSERT INTO entidade(id_entidade, endereco, bairro, numero, situacao, id_usuario_cadastro, telefone, celular, email, id_cidade) VALUES ('1', 'Rua Pércio Freitas', 'Alto da Bronze', '41', 'A', '1', '51333333' ,'51988880000', 'essentialdrinks@gmail.com', '1') ON CONFLICT DO NOTHING;
+INSERT INTO funcionario(id_funcionario, nome, cpf, rg, dt_nascimento, sexo, id_entidade) VALUES ('1', 'Administrator', '000.000.000-99','4000400900' ,'10/12/2021', 'Masculino', '1') ON CONFLICT DO NOTHING;
+INSERT INTO usuario(id_usuario, login, senha, dt_criacao, situacao, id_funcionario, permissao) VALUES ('1', 'admin', 'admin', '10/12/2021', 'A', '1', 0) ON CONFLICT DO NOTHING;

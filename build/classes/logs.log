@@ -143,3 +143,160 @@ ERROR 2021-12-10 20:19:45 - ERROR: relation "audit_log" does not exist
   Posição: 297
  WARN 2021-12-10 20:19:47 - SQL Error: 0, SQLState: 25P02
 ERROR 2021-12-10 20:19:47 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 12:37:29 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 12:37:29 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 12:50:15 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 12:50:15 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 12:50:24 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-11 12:50:24 - ERROR: relation "audit_log" does not exist
+  Posição: 297
+ WARN 2021-12-11 13:14:26 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:14:26 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:16:53 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:16:53 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:16:56 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:16:56 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:19:42 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:19:42 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:19:46 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:19:46 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:22:51 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:22:51 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:22:54 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:22:54 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:24:36 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 13:24:36 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 13:24:50 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 13:24:50 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 13:28:18 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 13:28:18 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 13:34:23 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:34:23 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:39:57 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:39:57 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(1) is not present in table "estado".
+ERROR 2021-12-11 13:39:57 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:40:15 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:40:15 - ERROR: insert or update on table "cidade" violates foreign key constraint "fk_cidade_estado"
+  Detalhe: Key (id_estado)=(1) is not present in table "estado".
+ERROR 2021-12-11 13:40:15 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:43:23 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:43:23 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:45:11 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:45:11 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:45:21 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:45:21 - ERROR: insert or update on table "audit_log" violates foreign key constraint "fk_audit_log"
+  Detalhe: Key (id_usuario)=(1) is not present in table "usuario".
+  Onde: SQL statement "INSERT INTO  audit_log(
+        logid, 
+        id_usuario, 
+        event_time_utc, 
+        table_name, 
+        operation, 
+        before_value, 
+        after_value 
+    ) VALUES (
+        default,
+        NEW.id_usuario_cadastro, 
+        current_timestamp AT TIME ZONE 'UTC', 
+        TG_TABLE_SCHEMA ||  '.' || TG_TABLE_NAME, 
+        TG_OP, 
+        old_row, 
+        new_row 
+    )"
+função PL/pgSQL audit_trigger() linha 12 em comando SQL
+ERROR 2021-12-11 13:45:21 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:46:07 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:46:07 - ERROR: insert or update on table "usuario" violates foreign key constraint "fk_usuario_funcionario"
+  Detalhe: Key (id_funcionario)=(1) is not present in table "funcionario".
+ERROR 2021-12-11 13:46:07 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:46:10 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:46:10 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:46:16 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 13:46:16 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 13:49:40 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:49:40 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:49:42 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:49:42 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:51:48 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:51:48 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:51:50 - SQL Error: 0, SQLState: 42703
+ERROR 2021-12-11 13:51:50 - ERROR: column funcionari0_.situacao does not exist
+  Posição: 257
+ WARN 2021-12-11 13:53:28 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 13:53:28 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 13:54:39 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:54:39 - ERROR: insert or update on table "entidade" violates foreign key constraint "fk_entidade_cidade"
+  Detalhe: Key (id_cidade)=(1) is not present in table "cidade".
+ERROR 2021-12-11 13:54:39 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:54:39 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:54:39 - ERROR: insert or update on table "funcionario" violates foreign key constraint "fk_funcionario_entidade"
+  Detalhe: Key (id_entidade)=(0) is not present in table "entidade".
+ERROR 2021-12-11 13:54:39 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 13:59:02 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 13:59:02 - ERROR: insert or update on table "usuario" violates foreign key constraint "fk_usuario_funcionario"
+  Detalhe: Key (id_funcionario)=(1) is not present in table "funcionario".
+ERROR 2021-12-11 13:59:02 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:03:35 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 14:03:35 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 14:03:35 - SQL Error: 0, SQLState: 22003
+ERROR 2021-12-11 14:03:35 - Valor inválido para tipo int : A
+ WARN 2021-12-11 14:15:30 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 14:15:30 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 14:21:00 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 14:21:00 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 14:22:09 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-11 14:22:09 - ERROR: duplicate key value violates unique constraint "pk_entidade"
+  Detalhe: Key (id_entidade)=(1) already exists.
+ERROR 2021-12-11 14:22:09 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:22:09 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-11 14:22:09 - ERROR: duplicate key value violates unique constraint "pk_funcionario"
+  Detalhe: Key (id_funcionario)=(1) already exists.
+ERROR 2021-12-11 14:22:09 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:23:08 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-11 14:23:08 - ERROR: duplicate key value violates unique constraint "pk_funcionario"
+  Detalhe: Key (id_funcionario)=(2) already exists.
+ERROR 2021-12-11 14:23:08 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:31:27 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-11 14:31:27 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-11 14:34:03 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-11 14:34:03 - ERROR: relation "audit_log" does not exist
+  Posição: 297
+ WARN 2021-12-11 14:34:19 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 14:34:19 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 14:34:25 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 14:34:25 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 14:50:45 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 14:50:45 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 14:50:45 - SQL Error: 0, SQLState: 25P02
+ERROR 2021-12-11 14:50:45 - ERROR: current transaction is aborted, commands ignored until end of transaction block
+ WARN 2021-12-11 14:51:23 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-11 14:51:23 - ERROR: duplicate key value violates unique constraint "pk_usuario"
+  Detalhe: Key (id_usuario)=(1) already exists.
+ERROR 2021-12-11 14:51:23 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:51:27 - SQL Error: 0, SQLState: 23505
+ERROR 2021-12-11 14:51:27 - ERROR: duplicate key value violates unique constraint "pk_usuario"
+  Detalhe: Key (id_usuario)=(2) already exists.
+ERROR 2021-12-11 14:51:27 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 14:51:30 - SQL Error: 0, SQLState: 23503
+ERROR 2021-12-11 14:51:30 - ERROR: insert or update on table "usuario" violates foreign key constraint "fk_usuario_funcionario"
+  Detalhe: Key (id_funcionario)=(0) is not present in table "funcionario".
+ERROR 2021-12-11 14:51:30 - Erro no registro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+ WARN 2021-12-11 16:24:32 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-11 16:24:32 - ERROR: relation "audit_log" does not exist
+  Posição: 297
+ WARN 2021-12-12 17:43:21 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-12 17:43:21 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-12 17:44:26 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-12 17:44:26 - ERROR: relation "audit_log" does not exist
+  Posição: 42
+ WARN 2021-12-12 19:53:03 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+ WARN 2021-12-12 19:53:04 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+ WARN 2021-12-12 19:53:08 - SQL Error: 0, SQLState: 42P01
+ERROR 2021-12-12 19:53:08 - ERROR: relation "audit_log" does not exist
+  Posição: 42

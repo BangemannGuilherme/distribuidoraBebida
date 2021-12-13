@@ -22,7 +22,7 @@ public class DlgTipoProduto extends javax.swing.JDialog {
 
     TipoProdutoTableModel tableModel = new TipoProdutoTableModel();
     int idtipo_produto = 0;
-    IfProduto parent;
+    IfrProduto parent;
 
     /**
      * Creates new form DlgTipoProduto
@@ -35,10 +35,10 @@ public class DlgTipoProduto extends javax.swing.JDialog {
         tblTipoProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
         tblTipoProduto.getColumnModel().getColumn(1).setPreferredWidth(350);
         tblTipoProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
+        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4});
     }
 
-    public DlgTipoProduto(IfProduto parent, boolean modal) {
+    public DlgTipoProduto(IfrProduto parent, boolean modal) {
         initComponents();
         limpaCampos();
         this.parent = parent;
@@ -46,19 +46,21 @@ public class DlgTipoProduto extends javax.swing.JDialog {
         tblTipoProduto.getColumnModel().getColumn(0).setPreferredWidth(10);
         tblTipoProduto.getColumnModel().getColumn(1).setPreferredWidth(350);
         tblTipoProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4, 5});
-        Formatacao.formatarMoeda(tfdValor);
+        JTableUtilities.setCellsAlignment(tblTipoProduto, SwingConstants.CENTER, new int[]{0, 2, 3, 4});
 
     }
 
     private boolean validaCampos() {
         boolean valido = true;
-        if ((Integer) spnCapacidade.getValue() <= 0 || (Integer) spnBanheiros.getValue() <= 0 || (Integer) spnComodos.getValue() <= 0) {
+        if (tfdVolume.getText().length() == 0) {
             valido = false;
-            JOptionPane.showMessageDialog(null, "Verifique os campos!", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
-        } else if (txaMarca.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Insira um Volume em ml!", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
+        } else if (tfdMarca.getText().length() == 0) {
             valido = false;
-            JOptionPane.showMessageDialog(null, "Insira uma descrição.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Insira uma Marca.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
+        } else if (tfdRecipiente.getText().length() == 0) {
+            valido = false;
+            JOptionPane.showMessageDialog(null, "Insira um Recipiente.", "Verifique os campos!", JOptionPane.WARNING_MESSAGE);
         } else if (valido) {
 
         }
@@ -330,33 +332,28 @@ public class DlgTipoProduto extends javax.swing.JDialog {
             TipoProdutoDAO dao = new TipoProdutoDAO();
             TipoProduto t = new TipoProduto();
             t.setId_tipo_produto(idtipo_produto);
-            t.setDs_tipo_produto(txaMarca.getText());
-            t.setNr_capacidade(Integer.parseInt(spnCapacidade.getValue() + ""));
-            t.setNr_comodo(Integer.parseInt(spnComodos.getValue() + ""));
-            t.setNr_banheiro(Integer.parseInt(spnBanheiros.getValue() + ""));
-
-            //ALTERAR VALORES
-            String semPontosAdicionais = tfdValor.getText().replace(".", "");
-            t.setVl_reserva(Double.parseDouble(semPontosAdicionais.replace(',', '.')));
+            t.setMarca(tfdMarca.getText());
+            t.setRecipiente(tfdRecipiente.getText());
+            t.setVolume(tfdVolume.getText());
 
             t.setId_usuario_cadastro(1); // ID = 1 (admin)
-            t.setIe_situacao('A'); //A = Ativa
+            t.setSituacao('A'); //A = Ativa
             if (idtipo_produto == 0) {
                 Integer returnOfSavedID = dao.save(t);
                 if (returnOfSavedID != null) {
-                    JOptionPane.showMessageDialog(null, "Tipo de quarto cadastrado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Tipo de produto cadastrado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                     limpaCampos();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar tipo de quarto...", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar tipo de produto...", "ERRO!", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 String retorno = dao.update(t);
                 if (retorno == null) {
-                    JOptionPane.showMessageDialog(null, "Tipo de quarto atualizado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Tipo de produto atualizado com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                     this.idtipo_produto = 0;
                     limpaCampos();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo de quarto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo de produto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
                 }
             }
             this.tableModel.updateData("");
@@ -372,14 +369,14 @@ public class DlgTipoProduto extends javax.swing.JDialog {
             //remonta o produto
             TipoProdutoDAO dao = new TipoProdutoDAO();
             TipoProduto t = dao.findById((int) tableModel.getValueAt(tblTipoProduto.getSelectedRow(), 0));
-            t.setIe_situacao('I'); //INATIVANDO
+            t.setSituacao('I'); //INATIVANDO
 
             String retorno = dao.update(t);
             if (retorno == null) {
-                JOptionPane.showMessageDialog(null, "Tipo de quarto excluído com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Tipo de produto excluído com sucesso", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                 this.tableModel.updateData("");
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir tipo de quarto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro ao excluir tipo de produto\nMensagem técnica: " + retorno, "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um produto para Excluir.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
@@ -393,16 +390,14 @@ public class DlgTipoProduto extends javax.swing.JDialog {
             TipoProduto tqBusca = new TipoProdutoDAO().findById(this.idtipo_produto);
 
             tfdMostraId.setText(String.valueOf(idtipo_produto));
-            tfdMarca.setText(String.valueOf(tqBusca.getDs_tipo_produto()));
-            spnCapacidade.setValue(tqBusca.getNr_capacidade());
-            spnComodos.setValue(tqBusca.getNr_comodo());
-            spnBanheiros.setValue(tqBusca.getNr_banheiro());
-            tfdValor.setText(String.valueOf(tableModel.getValueAt(tblTipoProduto.getSelectedRow(), 5)));
+            tfdMarca.setText(String.valueOf(tqBusca.getMarca()));
+            tfdRecipiente.setText(String.valueOf(tqBusca.getRecipiente()));
+            tfdVolume.setText(String.valueOf(tqBusca.getVolume()));
 
             //retorna à aba de cadastro
             pnlTipoProduto.setSelectedIndex(0);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um tipo de quarto para Editar.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um tipo de produto para Editar.", "Verifique a seleção!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -495,11 +490,9 @@ public class DlgTipoProduto extends javax.swing.JDialog {
 
     private void limpaCampos() {
         tfdMostraId.setText("");
-        txaMarca.setText("");
-        tfdValor.setText("00");
-        spnCapacidade.setValue(1);
-        spnComodos.setValue(1);
-        spnBanheiros.setValue(1);
-        txaMarca.requestFocus();
+        tfdMarca.setText("");
+        tfdRecipiente.setText("");
+        tfdVolume.setText("");
+        tfdMarca.requestFocus();
     }
 }

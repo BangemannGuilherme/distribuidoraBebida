@@ -284,7 +284,7 @@ public class IfrCidade extends javax.swing.JInternalFrame {
             p.setSituacao('A'); //A = Ativa
 
             Estado estado = new Estado();
-            estado.setId_estado(1);
+            estado.setId_estado(999);
             estado.setEstado("Rio Grande do Sul");
             estado.setSigla_estado("RS");
             estado.setSituacao('A');

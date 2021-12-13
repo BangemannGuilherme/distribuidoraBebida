@@ -19,7 +19,7 @@ import Utils.Formatacao;
 public class FuncionarioTableModel extends AbstractTableModel {
 
     private List<Funcionario> dados = new ArrayList<>();
-    private String[] colunas = {"ID","Nome", "CPF", "RG", "Dt. Nascimento", "Entidade"};
+    private String[] colunas = {"ID", "Nome", "CPF", "RG", "Dt. Nascimento", "Sexo", "Entidade"};
 
     public FuncionarioTableModel() {
         updateData("");
@@ -64,6 +64,8 @@ public class FuncionarioTableModel extends AbstractTableModel {
             case 4:
                 return Formatacao.ajustaDataDMA(dados.get(linha).getDt_nascimento().toString());
             case 5:
+                return dados.get(linha).getSexo();
+            case 6:
                 return dados.get(linha).getId_entidade().getId_entidade();
         }
 

@@ -67,17 +67,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         dskPrincipal = new javax.swing.JDesktopPane();
-        btnPessoaFisica = new javax.swing.JButton();
-        btnReserva = new javax.swing.JButton();
+        btnFuncionario = new javax.swing.JButton();
+        btnVenda = new javax.swing.JButton();
         btnProduto = new javax.swing.JButton();
         btnCidade = new javax.swing.JButton();
-        btnUsuario2 = new javax.swing.JButton();
-        btnQuarto = new javax.swing.JButton();
+        btnUsuario = new javax.swing.JButton();
         pnlAdmin = new javax.swing.JPanel();
         btnLog = new javax.swing.JButton();
         btnInformacoes = new javax.swing.JButton();
         btnAuditoria = new javax.swing.JButton();
         btnEmail = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        btnFornecedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EasyRoom");
@@ -160,7 +161,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlLogo.setBackground(new java.awt.Color(48, 44, 44));
         pnlLogo.setPreferredSize(new java.awt.Dimension(163, 72));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/logo_easyroom_50x34.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/essential-drinks-logo- 42x42.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +175,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1261, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlLogoLayout.setVerticalGroup(
@@ -189,29 +190,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         dskPrincipal.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnPessoaFisica.setBackground(new java.awt.Color(229, 215, 208));
-        btnPessoaFisica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cadastro.png"))); // NOI18N
-        btnPessoaFisica.setText("Cadastro de Pessoa Física");
-        btnPessoaFisica.setToolTipText("");
-        btnPessoaFisica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnPessoaFisica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnPessoaFisica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
+        btnFuncionario.setBackground(new java.awt.Color(229, 215, 208));
+        btnFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cadastro.png"))); // NOI18N
+        btnFuncionario.setText("Cadastro de Funcionário");
+        btnFuncionario.setToolTipText("");
+        btnFuncionario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnFuncionario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnFuncionario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPessoaFisicaActionPerformed(evt);
+                btnFuncionarioActionPerformed(evt);
             }
         });
 
-        btnReserva.setBackground(new java.awt.Color(229, 215, 208));
-        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/reserva.png"))); // NOI18N
-        btnReserva.setText("Reservas");
-        btnReserva.setToolTipText("");
-        btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnReserva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnReserva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnReserva.addActionListener(new java.awt.event.ActionListener() {
+        btnVenda.setBackground(new java.awt.Color(229, 215, 208));
+        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/reserva.png"))); // NOI18N
+        btnVenda.setText("Vendas");
+        btnVenda.setToolTipText("");
+        btnVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReservaActionPerformed(evt);
+                btnVendaActionPerformed(evt);
             }
         });
 
@@ -244,34 +245,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnUsuario2.setBackground(new java.awt.Color(229, 215, 208));
-        btnUsuario2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/usuario.png"))); // NOI18N
-        btnUsuario2.setText("Cadastro de Usuários");
-        btnUsuario2.setToolTipText("");
-        btnUsuario2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuario2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUsuario2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUsuario2.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuario.setBackground(new java.awt.Color(229, 215, 208));
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/usuario.png"))); // NOI18N
+        btnUsuario.setText("Cadastro de Usuários");
+        btnUsuario.setToolTipText("");
+        btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuario2ActionPerformed(evt);
-            }
-        });
-
-        btnQuarto.setBackground(new java.awt.Color(229, 215, 208));
-        btnQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/bed-45.png"))); // NOI18N
-        btnQuarto.setText("Cadastro de Quartos");
-        btnQuarto.setToolTipText("");
-        btnQuarto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnQuarto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnQuarto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnQuarto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuartoActionPerformed(evt);
+                btnUsuarioActionPerformed(evt);
             }
         });
 
         pnlAdmin.setBackground(new java.awt.Color(48, 44, 44));
-        pnlAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções de Administrador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        pnlAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções de Administrador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         btnLog.setBackground(new java.awt.Color(229, 215, 208));
         btnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/log-45.png"))); // NOI18N
@@ -319,9 +307,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(pnlAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(44, 44, 44)
                 .addComponent(btnAuditoria, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(46, 46, 46)
                 .addComponent(btnInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(433, Short.MAX_VALUE))
         );
@@ -349,38 +337,71 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        dskPrincipal.setLayer(btnPessoaFisica, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dskPrincipal.setLayer(btnReserva, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        btnCliente.setBackground(new java.awt.Color(229, 215, 208));
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cadastro.png"))); // NOI18N
+        btnCliente.setText("Cadastro de Cliente");
+        btnCliente.setToolTipText("");
+        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+
+        btnFornecedor.setBackground(new java.awt.Color(229, 215, 208));
+        btnFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/cadastro.png"))); // NOI18N
+        btnFornecedor.setText("Cadastro de Fornecedor");
+        btnFornecedor.setToolTipText("");
+        btnFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnFornecedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnFornecedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFornecedorActionPerformed(evt);
+            }
+        });
+
+        dskPrincipal.setLayer(btnFuncionario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPrincipal.setLayer(btnVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dskPrincipal.setLayer(btnProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dskPrincipal.setLayer(btnCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dskPrincipal.setLayer(btnUsuario2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dskPrincipal.setLayer(btnQuarto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPrincipal.setLayer(btnUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dskPrincipal.setLayer(pnlAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dskPrincipal.setLayer(btnEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPrincipal.setLayer(btnCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPrincipal.setLayer(btnFornecedor, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dskPrincipalLayout = new javax.swing.GroupLayout(dskPrincipal);
         dskPrincipal.setLayout(dskPrincipalLayout);
         dskPrincipalLayout.setHorizontalGroup(
             dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dskPrincipalLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(dskPrincipalLayout.createSequentialGroup()
-                        .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPessoaFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                        .addGap(74, 74, 74)
+                        .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dskPrincipalLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dskPrincipalLayout.createSequentialGroup()
-                                .addComponent(btnUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(btnReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(btnCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(52, 52, 52)
+                                .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dskPrincipalLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(45, 45, 45)
+                        .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(btnFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
         dskPrincipalLayout.setVerticalGroup(
@@ -388,15 +409,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(dskPrincipalLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPessoaFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -429,20 +451,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void btnPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPessoaFisicaActionPerformed
-        IfrFuncionario ifrPessoa = new IfrFuncionario();
-        dskPrincipal.add(ifrPessoa);
-        ifrPessoa.setVisible(true);
-    }//GEN-LAST:event_btnPessoaFisicaActionPerformed
+    private void btnFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioActionPerformed
+        IfrFuncionario ifrFuncionario = new IfrFuncionario();
+        dskPrincipal.add(ifrFuncionario);
+        ifrFuncionario.setVisible(true);
+    }//GEN-LAST:event_btnFuncionarioActionPerformed
 
-    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservaActionPerformed
-        IfrVenda ifrReserva = new IfrVenda();
-        dskPrincipal.add(ifrReserva);
-        ifrReserva.setVisible(true);
-    }//GEN-LAST:event_btnReservaActionPerformed
+    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+        IfrVenda1 ifrVenda = new IfrVenda1();
+        dskPrincipal.add(ifrVenda);
+        ifrVenda.setVisible(true);
+    }//GEN-LAST:event_btnVendaActionPerformed
 
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
-        IfrProduto1 ifrProduto = new IfrProduto1();
+        IfrProduto ifrProduto = new IfrProduto();
         dskPrincipal.add(ifrProduto);
         ifrProduto.setVisible(true);
     }//GEN-LAST:event_btnProdutoActionPerformed
@@ -462,17 +484,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ifrCidade.setVisible(true);
     }//GEN-LAST:event_btnCidadeActionPerformed
 
-    private void btnUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuario2ActionPerformed
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         IfrUsuario ifrUsuario = new IfrUsuario();
         dskPrincipal.add(ifrUsuario);
         ifrUsuario.setVisible(true);
-    }//GEN-LAST:event_btnUsuario2ActionPerformed
-
-    private void btnQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuartoActionPerformed
-        IfProduto ifrQuarto = new IfProduto();
-        dskPrincipal.add(ifrQuarto);
-        ifrQuarto.setVisible(true);
-    }//GEN-LAST:event_btnQuartoActionPerformed
+    }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         IfrLog ifrLog = new IfrLog();
@@ -497,6 +513,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         dskPrincipal.add(ifrAuditoria);
         ifrAuditoria.setVisible(true);
     }//GEN-LAST:event_btnAuditoriaActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -536,17 +560,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuditoria;
     private javax.swing.JButton btnCidade;
+    private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnEmail;
+    private javax.swing.JButton btnFornecedor;
+    private javax.swing.JButton btnFuncionario;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInformacoes;
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnPessoaFisica;
     private javax.swing.JButton btnProduto;
-    private javax.swing.JButton btnQuarto;
     private javax.swing.JButton btnReport;
-    private javax.swing.JButton btnReserva;
-    private javax.swing.JButton btnUsuario2;
+    private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVenda;
     private javax.swing.JDesktopPane dskPrincipal;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

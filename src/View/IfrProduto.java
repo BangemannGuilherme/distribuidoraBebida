@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
  *
  * @author Gui
  */
-public class IfProduto extends javax.swing.JInternalFrame {
+public class IfrProduto extends javax.swing.JInternalFrame {
 
     ProdutoTableModel tableModel = new ProdutoTableModel();
     int idproduto = 0;
@@ -29,7 +29,7 @@ public class IfProduto extends javax.swing.JInternalFrame {
     /**
      * Creates new form IfrProduto
      */
-    public IfProduto() {
+    public IfrProduto() {
         initComponents();
         tblProduto.setModel(tableModel);
 //      tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10);

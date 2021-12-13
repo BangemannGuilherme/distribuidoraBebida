@@ -41,9 +41,7 @@ public class Funcionario {
     @Column(name = "dt_nascimento")
     private Date dt_nascimento;
     @Column(name = "sexo")
-    private Character sexo;
-    @Column(name = "situacao")
-    private Character situacao;    
+    private Character sexo;   
     @JoinColumn(name = "id_entidade", referencedColumnName = "id_entidade")
     @OneToOne
     private Entidade id_entidade;    
@@ -100,14 +98,6 @@ public class Funcionario {
 
     public void setSexo(Character sexo) {
         this.sexo = sexo;
-    }
-    
-    public Character getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Character situacao) {
-        this.situacao = situacao;
     }
 
     public Entidade getId_entidade() {
